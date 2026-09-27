@@ -84,6 +84,8 @@ li{text-wrap:pretty}
 .copy-status{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.06em;color:var(--pencil)}
 .summary a,.job li a{text-decoration:none;border-bottom:2px solid var(--mark)}
 .summary a:hover,.job li a:hover{background:var(--mark);color:var(--on-mark)}
+.print-only{display:none}
+.projects dt{text-transform:none;letter-spacing:.02em}
 .summary{max-width:60ch;font-size:18px;line-height:1.55}
 
 .plate{--c:var(--ink);--l:14px;--w:1.5px;margin:0;padding:clamp(12px,2.4vw,28px);background:
@@ -163,6 +165,20 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
   html,body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{font-size:9.3pt;line-height:1.3;padding:0}
   .top,.foot,#copy-email,.copy-status,.inlink[download]{display:none}
+  .print-only{display:block}
+  .head .kicker,.head .raw,.facts,.mailrow,main>figure.plate,.sh .mono,.job .meta,.job h3,.cur{display:none!important}
+  .res{margin-top:0}
+  .ats-contact{font-size:9.5pt}
+  .ats-h{font-size:15pt;font-stretch:72%;font-weight:850;margin-top:4px}
+  .job{display:block!important}
+  .ats-job{font-size:10pt;margin-bottom:4px}
+  .ats-job b{font-size:11pt}
+  .job ul{list-style:disc;padding-left:14px}
+  .job li{position:static;padding-left:0}
+  .job li::before{content:none}
+  .job .steps{list-style:none;padding-left:0}
+  .projects div{grid-template-columns:1fr!important;gap:1px}
+  .projects dt{font-family:var(--body);font-size:9.5pt;font-weight:700;letter-spacing:0}
   .head{padding-block:0 10px;gap:8px}
   .res{font-size:30pt}.raw{font-size:13pt}.role{font-size:12pt}
   .summary{font-size:9.5pt;max-width:none}
@@ -207,6 +223,8 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
       <li><b>India</b> / Vancouver, BC</li>
     </ul>
     <div class="mailrow"><a id="email" href="mailto:jayunewal@outlook.com?subject=Hello%20from%20your%20resume">jayunewal@outlook.com</a><button type="button" id="copy-email" aria-label="Copy email address">Copy</button><a class="inlink" href="https://www.linkedin.com/in/jayunewal" target="_blank" rel="noopener">LinkedIn ↗</a><a class="inlink" href="Jay-Unewal-Resume.pdf" download>PDF ↓</a><span class="copy-status" id="copy-status" role="status"></span></div>
+    <p class="ats-contact print-only">India / Vancouver, BC · jayunewal@outlook.com · linkedin.com/in/jayunewal · jayunewal.com</p>
+    <h2 class="print-only ats-h">Summary</h2>
     <p class="summary">I take products from idea to production across web, native iOS, APIs and AWS, and I make them fast and affordable to run. Today I lead engineering teams and architect the systems they build, most recently <a href="index.html#platform">Project Watershed</a>, a data platform.</p>
   </header>
 
@@ -274,6 +292,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     <article class="job">
       <div class="meta"><p class="when">2025 – Present <span class="cur">NOW</span></p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
       <div>
+        <p class="ats-job print-only"><b>Senior Product Development Lead</b> · TigmaMinds Pvt Ltd (formerly Crystal BI) · Guwahati, Assam, India · <span class="nw">2025 – Present</span></p>
         <h3>Senior Product Development Lead</h3>
         <ul>
           <li>Engineering manager and architect for <a href="index.html#platform">Project Watershed</a> (codename), a high-performance data platform with robust API orchestration, leading the cross-functional teams that build and scale it.</li>
@@ -292,6 +311,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     <article class="job">
       <div class="meta"><p class="when">2024 – 2025</p><p class="org">Fortune 500 company</p><p class="sub">Travel portal</p></div>
       <div>
+        <p class="ats-job print-only"><b>Senior Developer</b> · Fortune 500 company (travel portal) · <span class="nw">2024 – 2025</span></p>
         <h3>Senior Developer</h3>
         <ul>
           <li>Worked on the company's travel portal as a senior developer, handling both the frontend and the backend.</li>
@@ -302,6 +322,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     <article class="job">
       <div class="meta"><p class="when">2024 – 2025</p><p class="org">Teupo Inc</p><p class="sub">Vancouver, BC, Canada</p></div>
       <div>
+        <p class="ats-job print-only"><b>Product Development Lead</b> · Teupo Inc · Vancouver, BC, Canada · <span class="nw">2024 – 2025</span></p>
         <h3>Product Development Lead</h3>
         <ul>
           <li>Led a travel-domain services project, running knowledge transfers and onboarding and supporting multiple teams with development and code reviews.</li>
@@ -318,6 +339,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     <article class="job">
       <div class="meta"><p class="when">2018 – 2025</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
       <div>
+        <p class="ats-job print-only"><b>Product Development Engineer to Product Development Lead</b> · TigmaMinds Pvt Ltd (formerly Crystal BI) · Guwahati, Assam, India · <span class="nw">2018 – 2025</span></p>
         <h3>Product Development Engineer to Product Development Lead</h3>
         <ol class="steps" aria-label="Promotions">
           <li><span class="when">2018 – 2021</span>Product Development Engineer</li>
@@ -339,6 +361,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     <article class="job">
       <div class="meta"><p class="when">2017 – 2018</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
       <div>
+        <p class="ats-job print-only"><b>Product Development Trainee</b> · TigmaMinds Pvt Ltd (formerly Crystal BI) · Guwahati, Assam, India · <span class="nw">2017 – 2018</span></p>
         <h3>Product Development Trainee</h3>
         <ul>
           <li>Designed and built an automated pharmacy inventory management and GST-compliant billing system.</li>
@@ -350,9 +373,21 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     </article>
   </section>
 
+  <section aria-labelledby="proj-h">
+    <div class="sh"><h2 id="proj-h">Projects</h2><span class="mono">At TigmaMinds</span></div>
+    <dl class="skills projects">
+      <div><dt>Physician co-pilot</dt><dd>Generative AI co-pilot built on LLMs that assesses patient symptoms, gives an initial triage and guides patients to the right level of care.</dd></div>
+      <div><dt>SOAP notes and coding</dt><dd>GenAI microservice that uses NLP to turn doctor–patient conversations into structured SOAP notes and predicts ICD and CPT codes for billing.</dd></div>
+      <div><dt>Medical coding assistant</dt><dd>Coder-friendly tool on a GenAI model with a Retrieval-Augmented Generation (RAG) pipeline, giving real-time access to ICD and CPT standards.</dd></div>
+      <div><dt>Healthcare platform</dt><dd>Patient management, electronic health records (EHR), appointment scheduling, billing, invoicing and reporting.</dd></div>
+      <div><dt>Online pharmacy</dt><dd>Medication catalogue, online prescription upload, secure payments, hyperlocal delivery, inventory and GST-compliant billing.</dd></div>
+    </dl>
+  </section>
+
   <section aria-labelledby="skills-h">
     <div class="sh"><h2 id="skills-h">Skills</h2></div>
     <dl class="skills">
+      <div><dt>AI</dt><dd>Generative AI · LLMs · RAG · NLP · OCR</dd></div>
       <div><dt>Languages</dt><dd>Java · Python · Swift · JavaScript · HTML/CSS · SQL · NoSQL</dd></div>
       <div><dt>Technologies</dt><dd>iOS · Spring · Servlets · JSP · Flask · Node.js · MSSQL · PostgreSQL · MySQL · MongoDB · DynamoDB · Microservices · Kafka · Redis · Elasticsearch · Docker · Kubernetes · GitLab CI/CD · Jenkins · Gradle · Maven · NGINX · Firebase · Twilio · Stripe · JUnit · Mockito · TestNG · Pytest · Grafana · Splunk · Kibana · Logstash</dd></div>
       <div><dt>Cloud</dt><dd>Cloudflare · AWS: EC2 · ECS · EKS · RDS · S3 · Lambda · CloudFront · Step Functions · Elemental MediaConvert · CloudWatch · Route 53 · IAM</dd></div>
