@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jay Unewal, engineering lead. I take your idea to a production product, optimized at every layer.">
+<meta property="og:title" content="Jay Unewal">
+<meta property="og:description" content="Idea to production. Tuned at every layer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolygon fill='%23FFD43B' points='12,2.5 20.5,7.2 12,12 3.5,7.2'/%3E%3Cpolygon fill='%23F3F4EF' stroke='%2315171C' points='3.5,7.2 12,12 12,21.5 3.5,16.8'/%3E%3Cpolygon fill='%2315171C' points='12,12 20.5,7.2 20.5,16.8 12,21.5'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Jay Unewal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
+<style>
+:root{
+  --paper:#F3F4EF; --sheet:#F9FAF6; --plate:#FFFFFF; --ink:#15171C; --pencil:#5B606B; --grid:#D3D5CC;
+  --face-l:#E6E7E0; --face-r:#CFD1C8; --ph:#CDD0C6;
+  --mark:#FFD43B; --mark-l:#EDBE1F; --mark-r:#D6A90F; --signal:#E0A200; --on-mark:#15171C;
+  --void:#17191E; --void-edge:#17191E; --void-line:#5A606B; --void-text:#9A9FA9;
+  --hl-a:58%; --hl-b:90%; --hl-ink:#15171C;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --gut:clamp(16px,4vw,48px);
+  --glyph:#FFD43B;
+  color-scheme:light;
+}
+/* dark = blueprint: deep drafting blue, pale linework, the same yellow for "tuned" */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0D1A2B; --sheet:#11233A; --plate:#193050; --ink:#E7EDF5; --pencil:#9EB1C9; --grid:#28405F;
+    --face-l:#142A45; --face-r:#0B192B; --ph:#39557D;
+    --mark-l:#D9AE1C; --mark-r:#B38C0C; --signal:#FFD43B;
+    --void:#050A12; --void-edge:#8DA3C1; --void-line:#3E5879; --void-text:#8DA3C1;
+    --hl-a:6%; --hl-b:100%;
+    --glyph:#8A6A00;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0D1A2B; --sheet:#11233A; --plate:#193050; --ink:#E7EDF5; --pencil:#9EB1C9; --grid:#28405F;
+  --face-l:#142A45; --face-r:#0B192B; --ph:#39557D;
+  --mark-l:#D9AE1C; --mark-r:#B38C0C; --signal:#FFD43B;
+  --void:#050A12; --void-edge:#8DA3C1; --void-line:#3E5879; --void-text:#8DA3C1;
+  --hl-a:6%; --hl-b:100%;
+  --glyph:#8A6A00;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding-inline:var(--gut);background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+main,.top,.foot{max-width:1280px;margin-inline:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+figcaption span,.rv-t span{text-wrap:balance}
+.vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.hl{color:var(--hl-ink);background-image:linear-gradient(transparent var(--hl-a),var(--mark) var(--hl-a),var(--mark) var(--hl-b),transparent var(--hl-b));-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-inline:.05em}
+.mono,.kicker,.eyebrow{font-family:var(--mono);font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;font-size:11.5px;line-height:1.5}
+
+/* two-line heading rule: the raw line is wide and light, the resolved line is condensed and heavy */
+.raw{display:block;font-stretch:125%;font-weight:300;color:var(--pencil);letter-spacing:-.01em;line-height:1.1}
+.res{display:block;font-stretch:72%;font-weight:850;color:var(--ink);letter-spacing:-.01em;line-height:.95;margin-top:.06em}
+h1 .raw{font-size:clamp(1.6rem,1.2vw + 1.15rem,2.45rem)}
+h1 .res{font-size:clamp(3rem,4.4vw + 1.15rem,5.9rem)}
+h2 .raw{font-size:clamp(1.25rem,.9vw + 1rem,1.9rem)}
+h2 .res{font-size:clamp(2.35rem,3.2vw + 1.1rem,4.3rem)}
+h2 .inl{display:inline}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--mono);font-stretch:87.5%;font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.brand svg{width:22px;height:22px}
+.top nav{display:flex;gap:clamp(14px,2.4vw,28px)}
+.top nav a{font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding-block:4px;border-bottom:1.5px solid transparent}
+.top nav a:hover{border-color:var(--ink)}
+
+/* hero */
+.hero{display:grid;gap:clamp(28px,4vw,56px);padding-block:clamp(8px,2vw,28px) 0;align-items:center}
+.hero-text{display:grid;gap:22px;align-content:center;max-width:600px}
+.eyebrow{color:var(--pencil);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";flex:none;width:9px;height:9px;border:1.5px solid var(--ink)}
+.nw{white-space:nowrap}
+.lede{font-size:clamp(17px,.6vw + 13px,19px);line-height:1.5;max-width:38ch;color:var(--ink)}
+.links{display:flex;flex-wrap:wrap;gap:10px 28px}
+.links a{font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:600;padding-block:6px;border-bottom:1.5px solid var(--ink)}
+.links a:hover{background:var(--mark);color:var(--on-mark)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0;padding:0;list-style:none;color:var(--pencil)}
+.meta b{color:var(--ink);font-weight:600}
+@media (min-width:1180px){.hero{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}.hero-fig{padding:22px}}
+
+/* figure plates */
+.plate{--c:var(--ink);--l:14px;--w:1.5px;position:relative;margin:0;padding:clamp(14px,2.6vw,36px);background:
+  linear-gradient(var(--c),var(--c)) 0 0/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 0 0/var(--w) var(--l),
+  linear-gradient(var(--c),var(--c)) 100% 0/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 100% 0/var(--w) var(--l),
+  linear-gradient(var(--c),var(--c)) 0 100%/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 0 100%/var(--w) var(--l),
+  linear-gradient(var(--c),var(--c)) 100% 100%/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 100% 100%/var(--w) var(--l),
+  radial-gradient(circle at 1px 1px,var(--grid) 1.1px,transparent 1.5px) 0 0/22px 22px,var(--sheet);
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat}
+figcaption{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.legend{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:11px;height:11px;background:var(--mark);border:1px solid var(--ink)}
+
+/* sections */
+.sec{padding-block:clamp(64px,8vw,112px) 0}
+.sec-head{display:grid;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+.kicker{color:var(--pencil);display:flex;gap:10px;align-items:center}
+.kicker::before{content:"";flex:none;width:9px;height:9px;background:var(--ink)}
+.sec-head .lede{margin-top:6px;max-width:46ch}
+@media (min-width:900px){
+  .sec-head{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  .sec-head .kicker{grid-column:1/4;align-self:start;padding-top:.5em}
+  .sec-head h2,.sec-head .lede{grid-column:4/13}
+}
+
+/* diagrams: shared */
+.dg{display:block;width:100%;height:auto;overflow:visible}
+.dg text{font-family:var(--mono);font-stretch:87.5%;fill:var(--ink)}
+.dg .bx .ft,.dg .cy .ft{fill:var(--plate)}
+.dg .bx .fl,.dg .cy .fl{fill:var(--face-l)}
+.dg .bx .fr{fill:var(--face-r)}
+.dg .bx polygon,.dg .cy path,.dg .cy ellipse{stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.dg .hl .ft{fill:var(--mark)} .dg .hl .fl{fill:var(--mark-l)} .dg .hl .fr{fill:var(--mark-r)}
+.dg .ah{fill:var(--ink)}
+.dg .dot{fill:var(--ink)}
+.dg .lead{fill:none;stroke:var(--ink);stroke-width:1}
+.dg .port{fill:var(--plate);stroke:var(--ink);stroke-width:1.2}
+.dg .t-lab{font-size:12.5px;font-weight:650;letter-spacing:.07em}
+.dg .t-det{font-size:12px;fill:var(--pencil)}
+.dg .t-dim{font-size:10.5px;letter-spacing:.16em;fill:var(--pencil)}
+.dg .t-hd{font-size:10.5px;letter-spacing:.14em;fill:var(--pencil)}
+
+/* hero diagram */
+.hero-fig{align-self:start}
+.hero-d{max-width:800px;margin-inline:auto}
+.hero-m{display:none}
+.dg .ground{fill:none;stroke:var(--pencil);stroke-width:1;stroke-dasharray:4 5}
+.dg .proj{stroke:var(--pencil);stroke-width:1;stroke-dasharray:2 4}
+.dg .conn{stroke:var(--ink);stroke-width:1.2}
+.dg .scrn{fill:var(--sheet);stroke:var(--ink);stroke-width:.8}
+.dg .scrn-bar{fill:var(--ink)}
+.dg .tune{fill:var(--mark);stroke:var(--ink);stroke-width:.8}
+.dg .sk{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round}
+.dg .scr{fill:none;stroke:var(--pencil);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.dg .scr.hlp{stroke:var(--mark);stroke-width:8;stroke-linecap:butt}
+.dg .iarrow{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-dasharray:5 4}
+.dg .dim line{stroke:var(--pencil);stroke-width:1}
+.dg .flash{fill:var(--mark);opacity:0;pointer-events:none}
+.dg .pulse{fill:none;stroke:var(--signal);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:16 300;stroke-dashoffset:16;opacity:0}
+.hero-m .t-lab{font-size:11px}
+.hero-m .t-det{font-size:10.5px}
+/* one orchestrated moment on load: the idea drops through each layer once, and each layer flashes as it is tuned */
+@media (prefers-reduced-motion:no-preference){
+  .dg .pulse{animation:pulse .7s cubic-bezier(.45,0,.55,1) 1 both}
+  .dg .flash{animation:flash 1s ease-out 1 both}
+  .dg .p0{animation-delay:.35s} .dg .p1{animation-delay:1.05s} .dg .p2{animation-delay:1.55s} .dg .p3{animation-delay:2.05s} .dg .p4{animation-delay:2.55s}
+  .dg .f0{animation-delay:.95s} .dg .f1{animation-delay:1.55s} .dg .f2{animation-delay:2.05s} .dg .f3{animation-delay:2.55s} .dg .f4{animation-delay:3.05s}
+}
+@keyframes pulse{0%{stroke-dashoffset:16;opacity:1}100%{stroke-dashoffset:-100;opacity:1}}
+@keyframes flash{0%{opacity:0}18%{opacity:.55}100%{opacity:0}}
+
+/* revision drawing */
+.rev{display:grid;gap:clamp(24px,3vw,44px);align-items:center}
+.rev-draw{width:100%;max-width:540px;margin-inline:auto}
+.rev-svg .ly{transition:opacity .45s ease}
+.rev-fig[data-rev="a"] .l-b,.rev-fig[data-rev="a"] .l-m,.rev-fig[data-rev="a"] .l-c,.rev-fig[data-rev="a"] .l-d,.rev-fig[data-rev="a"] .l-e{opacity:0}
+.rev-fig[data-rev="b"] .l-a{opacity:.22}
+.rev-fig[data-rev="b"] .l-c,.rev-fig[data-rev="b"] .l-d,.rev-fig[data-rev="b"] .l-e{opacity:0}
+.rev-fig[data-rev="c"] .l-a,.rev-fig[data-rev="c"] .l-b,.rev-fig[data-rev="c"] .l-d,.rev-fig[data-rev="c"] .l-e{opacity:0}
+.rev-fig[data-rev="d"] .l-a,.rev-fig[data-rev="d"] .l-b,.rev-fig[data-rev="d"] .l-e{opacity:0}
+.rev-fig[data-rev="e"] .l-a,.rev-fig[data-rev="e"] .l-b{opacity:0}
+.rev-svg .pn{fill:none;stroke:var(--pencil);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.rev-svg .pn.thick{stroke-width:2}
+.rev-svg .t-pq{font-family:var(--display);font-size:22px;font-weight:700;fill:var(--pencil)}
+.rev-svg .wf{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-dasharray:5 4}
+.rev-svg .t-wf{font-size:10.5px;letter-spacing:.12em;fill:var(--pencil)}
+.rev-svg .dm line{stroke:var(--pencil);stroke-width:1}
+.rev-svg .t-dm{font-size:10.5px;letter-spacing:.16em;fill:var(--pencil)}
+.rev-svg .ml{fill:none;stroke:var(--ink);stroke-width:1.1}
+.rev-svg .tb-r{fill:var(--plate);stroke:var(--ink);stroke-width:1.2}
+.rev-svg .tb-h{fill:var(--ink)}
+.rev-svg .t-lb{font-size:12px;font-weight:650;letter-spacing:.08em;fill:var(--pencil)}
+.rev-svg .dv{fill:var(--plate);stroke:var(--ink);stroke-width:1.5}
+.rev-svg .rl{fill:none;stroke:var(--grid);stroke-width:1.2}
+.rev-svg .ph{fill:var(--ph)}
+.rev-svg .ink{fill:var(--ink)}
+.rev-svg .chip{fill:var(--face-l);stroke:var(--grid);stroke-width:1}
+.rev-svg .slot{fill:var(--plate);stroke:var(--grid);stroke-width:1.2}
+.rev-svg .slot.on{stroke:var(--ink);stroke-width:2}
+.rev-svg .t-ui{font-family:var(--display);font-stretch:100%;font-size:18px;font-weight:800;letter-spacing:-.01em}
+.rev-svg .t-ui2{font-family:var(--display);font-stretch:100%;font-size:13.5px;font-weight:800}
+.rev-svg .t-ui3{font-family:var(--display);font-stretch:100%;font-size:11.5px;font-weight:750}
+.rev-svg .t-cd{font-size:7.5px;letter-spacing:.08em;fill:var(--pencil)}
+.rev-svg .t-cn{font-family:var(--display);font-stretch:100%;font-size:13px;font-weight:750}
+.rev-svg .t-sl{font-family:var(--display);font-stretch:100%;font-size:10.5px;font-weight:650}
+.rev-svg .t-bt{font-family:var(--display);font-stretch:100%;font-size:11px;font-weight:750}
+.rev-svg .inv{fill:var(--paper)}
+.rev-svg .mapf{fill:var(--face-l)}
+.rev-svg .road{fill:none;stroke:var(--plate);stroke-width:5}
+.rev-svg .route{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:3 3}
+.rev-svg .live{fill:var(--plate);stroke:var(--ink);stroke-width:1.5}
+.rev-svg .wire2{fill:none;stroke:var(--ink);stroke-width:1.3}
+.rev-svg .apib{fill:var(--plate);stroke:var(--ink);stroke-width:1.4}
+.rev-svg .t-api{font-size:8.5px;fill:var(--pencil)}
+.rev-svg .prt{fill:var(--plate);stroke:var(--ink);stroke-width:1.2}
+.rev-svg .tg rect,.rev-svg .tn-bar,.rev-svg .tn-slab{fill:var(--mark);stroke:var(--ink);stroke-width:1}
+.rev-svg .t-tag{font-size:11px;font-weight:700;letter-spacing:.06em;fill:var(--on-mark)}
+.rev-svg .rn{stroke:var(--ink);stroke-width:1.3}
+.rev-svg .ci{fill:var(--plate);stroke:var(--ink);stroke-width:1.4}
+.rev-svg .ci.on{fill:var(--ink)}
+.rev-svg .tick{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.rev-svg .tick.inv-s{stroke:var(--paper)}
+.rev-svg .ct{fill:var(--face-l);stroke:var(--ink);stroke-width:1.3}
+.rev-svg .ct.ghost{fill:none;stroke-dasharray:3 3}
+.rev-svg .hb{fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+/* revision block: the drawing's own revision table is the control */
+.rvt{border:0;margin:0;padding:0;min-width:0}
+.rvt-head,.rv-box{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;column-gap:12px}
+.rvt-head{font-family:var(--mono);font-stretch:87.5%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);padding-bottom:10px;border-bottom:1.5px solid var(--ink)}
+.rvt-head span:last-child,.rv-by{text-align:right}
+.rv{display:block;position:relative;cursor:pointer}
+.rv input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.rv-box{align-items:start;padding-block:13px;border-bottom:1px solid var(--grid);transition:opacity .3s}
+.rv:last-child .rv-box{border-bottom:1.5px solid var(--ink)}
+.rv-l{display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--ink);font-family:var(--mono);font-stretch:87.5%;font-weight:700;font-size:12.5px;background:var(--plate)}
+.rv-t{display:grid;gap:2px}
+.rv-t b{font-family:var(--display);font-stretch:108%;font-weight:720;font-size:17px;line-height:1.25}
+.rv-t span{font-size:14.5px;line-height:1.4;color:var(--pencil)}
+.rv-by{font-family:var(--mono);font-stretch:87.5%;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil);padding-top:7px}
+.rv:hover .rv-l{background:var(--mark);color:var(--on-mark)}
+.rv input:checked + .rv-box .rv-l{background:var(--ink);color:var(--paper)}
+.rv input:checked + .rv-box .rv-t b{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.rv input:focus-visible + .rv-box{outline:2px solid var(--ink);outline-offset:2px}
+.rv.future .rv-box{opacity:.42}
+.rv-you .rv-l{border-style:dashed}
+@media (min-width:980px){.rev{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+
+/* platform */
+.compare{display:grid;gap:14px}
+.side{display:flex;flex-direction:column;gap:18px}
+.side-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px 24px}
+.tag{font-family:var(--mono);font-stretch:87.5%;font-size:12px;font-weight:650;letter-spacing:.1em;text-transform:uppercase}
+.note{font-size:15px;color:var(--pencil);margin-top:4px}
+.bb .bb-svg{max-width:380px;margin-block:auto}
+.vs{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;font-family:var(--mono);font-stretch:87.5%;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil);padding-block:6px}
+.vs svg{width:44px;height:14px;transform:rotate(90deg)}
+.tools{display:grid;gap:8px;justify-items:start}
+.tools-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.seg{display:inline-flex}
+.seg button{appearance:none;font:inherit;font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--plate);border:1.5px solid var(--ink);padding:8px 13px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;border-radius:0}
+.seg button + button{margin-left:-1.5px}
+.seg button:first-child{border-radius:3px 0 0 3px}
+.seg button:last-child{border-radius:0 3px 3px 0}
+.seg button svg{width:13px;height:13px}
+.seg button:hover{background:var(--face-l)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible{position:relative;z-index:1;outline-offset:2px}
+.oneclick{font-family:var(--mono);font-stretch:87.5%;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--pencil)}
+.status{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px;color:var(--pencil)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid var(--pencil)}
+.live-on .status{color:var(--ink)}
+.live-on .status::before{background:var(--ink);border-color:var(--ink)}
+.flow-v{display:none;max-width:520px}
+.readout{font-family:var(--mono);font-stretch:87.5%;font-size:12px;letter-spacing:.03em;line-height:1.7;min-height:3.4em;color:var(--pencil)}
+.readout .ro-k{font-weight:700;color:var(--paper);background:var(--ink);padding:2px 6px;letter-spacing:.08em;text-transform:uppercase}
+.readout .ro-v{color:var(--ink)}
+.dg .blk{cursor:pointer;outline:none}
+.dg .fring{fill:none;stroke:none}
+.dg .blk:focus-visible .fring{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:4 3}
+.dg .blk-r,.dg .kb-r{fill:var(--plate);stroke:var(--ink);stroke-width:1.4;transition:fill .2s}
+.dg .t-blk{font-size:12px;font-weight:650;letter-spacing:.06em}
+.flow-v .t-blk{font-size:10.5px}
+.dg .mk{fill:none;stroke:var(--ink);stroke-width:1.3}
+.dg .out .mk{fill:var(--ink)}
+.dg .t-sub{font-size:10px;fill:var(--pencil)}
+.dg .ai-r{fill:var(--ink);stroke:var(--ink);stroke-width:1.4}
+.dg .t-ai{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:28px;fill:var(--paper)}
+.dg .t-ais{font-size:10px;fill:var(--paper);opacity:.8}
+.dg .ai-glyph line{stroke:var(--glyph);stroke-width:1.5}
+.dg .ai-glyph circle{fill:var(--glyph)}
+.dg .edge{fill:none;stroke:var(--ink);stroke-width:1.4;transition:opacity .25s,stroke-width .25s}
+.dg .kb-e{stroke-dasharray:4 4}
+.dg .edit rect{fill:var(--mark);stroke:var(--ink);stroke-width:1}
+.dg .t-tab{font-size:9px;font-weight:700;letter-spacing:.12em;fill:var(--on-mark)}
+.dg .cursor{fill:var(--plate);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.dg .edit .you{fill:var(--ink);stroke:none}
+.dg .t-you{font-size:8.5px;font-weight:700;letter-spacing:.1em;fill:var(--paper)}
+.dg .rep rect{fill:var(--plate);stroke:var(--ink);stroke-width:1.1;opacity:0;transition:opacity .3s}
+.scaled .dg .rep rect{opacity:1}
+.dg .probe{opacity:0;transition:opacity .25s}
+.debug .dg .probe{opacity:1}
+.dg .probe circle{fill:var(--plate);stroke:var(--signal);stroke-width:2.2}
+.dg .probe .pc{fill:var(--ink);stroke:none}
+.live-on .dg .edge{stroke-dasharray:6 5}
+@media (prefers-reduced-motion:no-preference){.live-on .dg .edge{animation:flow .8s linear infinite}}
+@keyframes flow{to{stroke-dashoffset:-11}}
+.dg .blk:hover .blk-r,.dg .blk.on .blk-r,.dg .blk:hover .kb-r,.dg .blk.on .kb-r{fill:var(--face-l);stroke-width:2}
+.dg .ai:hover .ai-r,.dg .ai.on .ai-r{stroke:var(--mark);stroke-width:4}
+.dg .trig[aria-pressed="true"] .blk-r{fill:var(--ink)}
+.dg .trig[aria-pressed="true"] .t-blk{fill:var(--paper)}
+.dg .trig[aria-pressed="true"] .mk{stroke:var(--paper)}
+.dg .faded{opacity:.16}
+.dg .edge.hot{stroke-width:2.6}
+.dg [data-r]{transition:opacity .25s}
+.dg .wire{stroke:var(--ink);stroke-width:1.4}
+.dg .void{fill:var(--void);stroke:var(--void-edge);stroke-width:1.4}
+.dg .tangle{fill:none;stroke:var(--void-line);stroke-width:1.2}
+.dg .t2{stroke-width:.9} .dg .t3{stroke-width:1.7;opacity:.7}
+.dg .t-void{font-size:10.5px;letter-spacing:.08em;fill:var(--void-text)}
+.dg .t-q{font-family:var(--display);font-size:17px;font-weight:800;fill:var(--pencil)}
+.steps{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;list-style:none;margin:22px 0 0;padding:0;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.steps li{display:inline-flex;align-items:center;gap:8px}
+.steps li + li::before{content:"→";color:var(--ink);margin-right:6px}
+@media (max-width:640px){.steps{flex-direction:column;align-items:flex-start}.steps li{position:relative;padding-left:22px}.steps li + li::before{content:"↓";position:absolute;left:2px;margin:0}}
+.who{font-weight:700;color:var(--paper);background:var(--ink);padding:2px 6px;letter-spacing:.1em}
+@media (min-width:1100px){
+  .compare{grid-template-columns:minmax(0,.8fr) 64px minmax(0,2fr);gap:0}
+  .vs{flex-direction:column}
+  .vs svg{transform:none}
+}
+
+/* earlier work */
+.work{list-style:none;margin:0;padding:0;display:grid;gap:clamp(28px,3vw,40px)}
+.work li{display:grid;gap:8px;grid-template-rows:auto auto 1fr auto;align-content:start}
+.work .gl{padding:16px 16px 0;aspect-ratio:4/3;max-width:100%;display:grid;align-items:end;overflow:hidden}
+.work .gl svg{display:block;width:100%;height:auto}
+.work h3{font-stretch:108%;font-weight:720;font-size:21px;letter-spacing:-.01em;margin-top:10px}
+.work p{font-size:15.5px;color:var(--pencil)}
+.work .yr{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;color:var(--ink)}
+.spot .fs{fill:var(--plate)} .spot .fs2{fill:var(--face-l)} .spot .si{stroke:var(--ink)} .spot .fph{fill:var(--ph)}
+.spot .fm{fill:var(--mark)} .spot .fmu{fill:var(--pencil)} .spot .fi{fill:var(--ink)} .spot .fp{fill:var(--paper)}
+.spot .ss{stroke:var(--plate)} .spot .fv{fill:var(--void)} .spot .fvf{fill:var(--void-line)} .spot .smu{stroke:var(--pencil)}
+.spot .sm{font-family:var(--mono);font-stretch:87.5%;letter-spacing:.04em}
+.spot .disp{font-family:var(--display)}
+.g-mk{fill:var(--mark);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.g-fl{fill:var(--plate);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.g-ink{fill:var(--ink);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+@media (min-width:760px){.work{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* contact title block */
+.tblock{display:grid;border:2px solid var(--ink);background:var(--sheet)}
+.tb{display:grid;gap:8px;align-content:start;padding:16px 18px;border-top:1px solid var(--ink);min-width:0}
+.tb:first-child{border-top:0}
+.tb-k{font-family:var(--mono);font-stretch:87.5%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil)}
+.tb-v{font-size:17px;font-weight:500}
+.tb-name .tb-v{font-family:var(--display);font-stretch:72%;font-weight:850;font-size:clamp(2.4rem,3vw + 1rem,4rem);line-height:.95;letter-spacing:-.01em}
+.mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+#email{font-family:var(--mono);font-stretch:87.5%;font-size:clamp(14px,1.1vw + 9px,19px);font-weight:600;user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+#copy-email{appearance:none;font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;background:var(--mark);color:var(--on-mark);border:1.5px solid var(--ink);border-radius:3px;cursor:pointer}
+#copy-email:hover{background:var(--ink);color:var(--paper)}
+.copy-status{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.06em;color:var(--pencil);min-height:1.5em}
+.tb a{justify-self:start;font-weight:650;font-size:17px;text-decoration:none;border-bottom:1.5px solid var(--ink)}
+.tb a:hover{background:var(--mark);color:var(--on-mark)}
+@media (min-width:860px){
+  .tblock{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)}
+  .tb{border-top:0;border-left:1px solid var(--ink)}
+  .tb-name{grid-row:span 2;border-left:0;align-content:space-between;min-height:200px}
+  .tb-mail{grid-column:2/5}
+  .tb-loc,.tb-in,.tb-sheet{border-top:1px solid var(--ink)}
+}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:28px 40px;margin-top:clamp(56px,7vw,96px);color:var(--pencil)}
+.foot a{text-decoration:none;border-bottom:1px solid currentColor}
+
+/* phone variants of the wide diagrams */
+@media (max-width:720px){.hero-d{display:none}.hero-m{display:block;max-width:520px;margin-inline:auto}}
+@media (max-width:640px){
+  .plate{padding:12px}.work .gl{padding:12px 12px 0}
+  .flow-h{display:none}.flow-v{display:block;margin-inline:auto}
+  .top nav a.opt{display:none}
+  .rev-svg .t-lb{font-size:14px}.rev-svg .t-wf{font-size:12px}
+  .rv-t b{font-size:16px}
+}
+@media (max-width:1099px){.bb .bb-svg{margin-inline:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Jay Unewal, back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polygon class="g-mk" points="12,2.5 20.5,7.2 12,12 3.5,7.2"/><polygon class="g-fl" points="3.5,7.2 12,12 12,21.5 3.5,16.8"/><polygon class="g-ink" points="12,12 20.5,7.2 20.5,16.8 12,21.5"/></svg>
+    Jay Unewal
+  </a>
+  <nav aria-label="Page">
+    <a class="opt" href="#platform">Platform</a>
+    <a href="resume.html">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="hero-text">
+      <p class="eyebrow"><span><span class="nw">Engineering Manager ·</span> <span class="nw">Product Development Lead</span></span></p>
+      <h1 id="hero-h"><span class="raw">Idea to production.</span> <span class="res">Tuned at <span class="hl">every layer.</span></span></h1>
+      <p class="lede">I'm Jay Unewal. I shape your idea, build it for web and iOS, and keep it fast in production.</p>
+      <div class="links"><a href="#platform">See the data platform ↓</a><a href="resume.html">Full resume →</a></div>
+      <ul class="meta mono" aria-label="At a glance">
+        <li><b>8+ years</b> in software</li>
+        <li><b>India</b> / Vancouver, BC</li>
+      </ul>
+    </div>
+    <figure class="plate hero-fig">
+      <svg class="dg hero-svg hero-d" viewBox="0 0 790 724" role="img" aria-label="Diagram: a sketched idea becomes a layered system. Client apps on web and iOS, a CloudFront CDN edge, services in Flask, Spring and Node.js with a Redis cache, a Kafka queue, and PostgreSQL and MongoDB data stores, all running on AWS with Docker and Kubernetes. A highlight marks the tuned part of every layer."><polygon class="ground" points="330,482 534.4,600 330,718 125.6,600"/><line class="proj" x1="156.8" y1="528" x2="156.8" y2="600"/><line class="proj" x1="330" y1="628" x2="330" y2="700"/><line class="proj" x1="503.2" y1="528" x2="503.2" y2="600"/><g class="layer" data-l="4"><g class="bx slab"><polygon class="fl" points="156.8,520 330,620 330,628 156.8,528"/><polygon class="fr" points="503.2,520 330,620 330,628 503.2,528"/><polygon class="ft" points="330,420 503.2,520 330,620 156.8,520"/></g><polygon class="flash f4" points="330,420 503.2,520 330,620 156.8,520"/><g class="cy "><path class="fl" d="M303.1,432 L303.1,468 A26.9,15.6 0 0 0 356.9,468 L356.9,432 Z"/><ellipse class="ft" cx="330" cy="432" rx="26.9" ry="15.6"/></g><g class="cy hl"><path class="fl" d="M363.7,467 L363.7,503 A26.9,15.6 0 0 0 417.6,503 L417.6,467 Z"/><ellipse class="ft" cx="390.6" cy="467" rx="26.9" ry="15.6"/></g><g class="cy "><path class="fl" d="M242.4,467 L242.4,503 A26.9,15.6 0 0 0 296.3,503 L296.3,467 Z"/><ellipse class="ft" cx="269.4" cy="467" rx="26.9" ry="15.6"/></g></g><line class="conn" x1="373.3" y1="493" x2="373.3" y2="565"/><polygon class="ah" points="373.3,536.6 370.4,531.3 376.2,531.3"/><path class="pulse p4" pathLength="100" d="M373.3,493 L373.3,565"/><line class="conn" x1="286.7" y1="493" x2="286.7" y2="565"/><polygon class="ah" points="286.7,528.6 289.6,533.9 283.8,533.9"/><ellipse class="port" cx="373.3" cy="565" rx="3.4" ry="2"/><g class="layer" data-l="3"><g class="bx slab"><polygon class="fl" points="156.8,440 330,540 330,548 156.8,448"/><polygon class="fr" points="503.2,440 330,540 330,548 503.2,448"/><polygon class="ft" points="330,340 503.2,440 330,540 156.8,440"/></g><polygon class="flash f3" points="330,340 503.2,440 330,540 156.8,440"/><g class="bx "><polygon class="fl" points="278,386 425.3,471 425.3,475 278,390"/><polygon class="fr" points="440.9,462 425.3,471 425.3,475 440.9,466"/><polygon class="ft" points="293.6,377 440.9,462 425.3,471 278,386"/></g><g class="bx "><polygon class="fl" points="285,368 293.6,373 293.6,397 285,392"/><polygon class="fr" points="312.7,362 293.6,373 293.6,397 312.7,386"/><polygon class="ft" points="304,357 312.7,362 293.6,373 285,368"/></g><g class="bx "><polygon class="fl" points="307.5,381 316.1,386 316.1,410 307.5,405"/><polygon class="fr" points="335.2,375 316.1,386 316.1,410 335.2,399"/><polygon class="ft" points="326.5,370 335.2,375 316.1,386 307.5,381"/></g><g class="bx "><polygon class="fl" points="330,394 338.7,399 338.7,423 330,418"/><polygon class="fr" points="357.7,388 338.7,399 338.7,423 357.7,412"/><polygon class="ft" points="349.1,383 357.7,388 338.7,399 330,394"/></g><g class="bx "><polygon class="fl" points="352.5,407 361.2,412 361.2,436 352.5,431"/><polygon class="fr" points="380.2,401 361.2,412 361.2,436 380.2,425"/><polygon class="ft" points="371.6,396 380.2,401 361.2,412 352.5,407"/></g><g class="bx "><polygon class="fl" points="375,420 383.7,425 383.7,449 375,444"/><polygon class="fr" points="402.7,414 383.7,425 383.7,449 402.7,438"/><polygon class="ft" points="394.1,409 402.7,414 383.7,425 375,420"/></g><g class="bx hl"><polygon class="fl" points="397.5,433 406.2,438 406.2,462 397.5,457"/><polygon class="fr" points="425.3,427 406.2,438 406.2,462 425.3,451"/><polygon class="ft" points="416.6,422 425.3,427 406.2,438 397.5,433"/></g></g><line class="conn" x1="373.3" y1="413" x2="373.3" y2="485"/><polygon class="ah" points="373.3,456.6 370.4,451.3 376.2,451.3"/><path class="pulse p3" pathLength="100" d="M373.3,413 L373.3,485"/><line class="conn" x1="286.7" y1="413" x2="286.7" y2="485"/><polygon class="ah" points="286.7,448.6 289.6,453.9 283.8,453.9"/><ellipse class="port" cx="373.3" cy="485" rx="3.4" ry="2"/><g class="layer" data-l="2"><g class="bx slab"><polygon class="fl" points="156.8,360 330,460 330,468 156.8,368"/><polygon class="fr" points="503.2,360 330,460 330,468 503.2,368"/><polygon class="ft" points="330,260 503.2,360 330,460 156.8,360"/></g><polygon class="flash f2" points="330,260 503.2,360 330,460 156.8,360"/><g class="bx "><polygon class="fl" points="293.6,271 330,292 330,328 293.6,307"/><polygon class="fr" points="366.4,271 330,292 330,328 366.4,307"/><polygon class="ft" points="330,250 366.4,271 330,292 293.6,271"/></g><g class="bx "><polygon class="fl" points="354.2,306 390.6,327 390.6,363 354.2,342"/><polygon class="fr" points="427,306 390.6,327 390.6,363 427,342"/><polygon class="ft" points="390.6,285 427,306 390.6,327 354.2,306"/></g><g class="bx "><polygon class="fl" points="233,306 269.4,327 269.4,363 233,342"/><polygon class="fr" points="305.8,306 269.4,327 269.4,363 305.8,342"/><polygon class="ft" points="269.4,285 305.8,306 269.4,327 233,306"/></g><g class="bx hl"><polygon class="fl" points="295.4,366 330,386 330,395 295.4,375"/><polygon class="fr" points="364.6,366 330,386 330,395 364.6,375"/><polygon class="ft" points="330,346 364.6,366 330,386 295.4,366"/></g></g><line class="conn" x1="373.3" y1="333" x2="373.3" y2="405"/><polygon class="ah" points="373.3,376.6 370.4,371.3 376.2,371.3"/><path class="pulse p2" pathLength="100" d="M373.3,333 L373.3,405"/><line class="conn" x1="286.7" y1="333" x2="286.7" y2="405"/><polygon class="ah" points="286.7,368.6 289.6,373.9 283.8,373.9"/><ellipse class="port" cx="373.3" cy="405" rx="3.4" ry="2"/><g class="layer" data-l="1"><g class="bx slab"><polygon class="fl" points="156.8,280 330,380 330,388 156.8,288"/><polygon class="fr" points="503.2,280 330,380 330,388 503.2,288"/><polygon class="ft" points="330,180 503.2,280 330,380 156.8,280"/></g><polygon class="flash f1" points="330,180 503.2,280 330,380 156.8,280"/><g class="bx "><polygon class="fl" points="312.7,214 330,224 330,236 312.7,226"/><polygon class="fr" points="347.3,214 330,224 330,236 347.3,226"/><polygon class="ft" points="330,204 347.3,214 330,224 312.7,214"/></g><g class="bx "><polygon class="fl" points="347.3,234 364.6,244 364.6,256 347.3,246"/><polygon class="fr" points="382,234 364.6,244 364.6,256 382,246"/><polygon class="ft" points="364.6,224 382,234 364.6,244 347.3,234"/></g><g class="bx "><polygon class="fl" points="382,254 399.3,264 399.3,276 382,266"/><polygon class="fr" points="416.6,254 399.3,264 399.3,276 416.6,266"/><polygon class="ft" points="399.3,244 416.6,254 399.3,264 382,254"/></g><g class="bx "><polygon class="fl" points="278,234 295.4,244 295.4,256 278,246"/><polygon class="fr" points="312.7,234 295.4,244 295.4,256 312.7,246"/><polygon class="ft" points="295.4,224 312.7,234 295.4,244 278,234"/></g><g class="bx "><polygon class="fl" points="312.7,254 330,264 330,276 312.7,266"/><polygon class="fr" points="347.3,254 330,264 330,276 347.3,266"/><polygon class="ft" points="330,244 347.3,254 330,264 312.7,254"/></g><g class="bx "><polygon class="fl" points="347.3,274 364.6,284 364.6,296 347.3,286"/><polygon class="fr" points="382,274 364.6,284 364.6,296 382,286"/><polygon class="ft" points="364.6,264 382,274 364.6,284 347.3,274"/></g><g class="bx "><polygon class="fl" points="243.4,254 260.7,264 260.7,276 243.4,266"/><polygon class="fr" points="278,254 260.7,264 260.7,276 278,266"/><polygon class="ft" points="260.7,244 278,254 260.7,264 243.4,254"/></g><g class="bx "><polygon class="fl" points="278,274 295.4,284 295.4,296 278,286"/><polygon class="fr" points="312.7,274 295.4,284 295.4,296 312.7,286"/><polygon class="ft" points="295.4,264 312.7,274 295.4,284 278,274"/></g><g class="bx hl"><polygon class="fl" points="312.7,294 330,304 330,316 312.7,306"/><polygon class="fr" points="347.3,294 330,304 330,316 347.3,306"/><polygon class="ft" points="330,284 347.3,294 330,304 312.7,294"/></g></g><line class="conn" x1="373.3" y1="253" x2="373.3" y2="325"/><polygon class="ah" points="373.3,296.6 370.4,291.3 376.2,291.3"/><path class="pulse p1" pathLength="100" d="M373.3,253 L373.3,325"/><line class="conn" x1="286.7" y1="253" x2="286.7" y2="325"/><polygon class="ah" points="286.7,288.6 289.6,293.9 283.8,293.9"/><ellipse class="port" cx="373.3" cy="325" rx="3.4" ry="2"/><g class="layer" data-l="0"><g class="bx slab"><polygon class="fl" points="156.8,200 330,300 330,308 156.8,208"/><polygon class="fr" points="503.2,200 330,300 330,308 503.2,208"/><polygon class="ft" points="330,100 503.2,200 330,300 156.8,200"/></g><polygon class="flash f0" points="330,100 503.2,200 330,300 156.8,200"/><g class="bx dev"><polygon class="fl" points="347.3,100 416.6,140 416.6,190 347.3,150"/><polygon class="fr" points="425.3,135 416.6,140 416.6,190 425.3,185"/><polygon class="ft" points="356,95 425.3,135 416.6,140 347.3,100"/></g><polygon class="scrn" points="351.7,107.5 412.3,142.5 412.3,182.5 351.7,147.5"/><polygon class="scrn-bar" points="351.7,107.5 412.3,142.5 412.3,149.5 351.7,114.5"/><g class="bx dev"><polygon class="fl" points="239.9,126 248.6,131 248.6,187 239.9,182"/><polygon class="fr" points="278,114 248.6,131 248.6,187 278,170"/><polygon class="ft" points="269.4,109 278,114 248.6,131 239.9,126"/></g><polygon class="scrn" points="273.7,121.5 252.9,133.5 252.9,179.5 273.7,167.5"/></g><g class="idea"><text x="14" y="16" class="t-lab">YOUR IDEA</text><path class="sk" d="M9.4,24.6 Q102,25.7 196.1,25.7 M189.9,21.3 Q189.9,69 189.2,117.6 M194.3,113 Q102,112.7 8.6,110.8 M14.3,116.2 Q12.3,69 13.9,20.2 "/><path class="scr" d="M26,46 Q30,42.7 34,46.5 Q38,48.5 42,45.5 Q46,42.1 50,46.3 Q54,48.5 58,45.8 Q62,41.3 66,46 Q70,48.7 74,46.2 Q78,41.1 82,45.7 Q86,50.8 90,45.2 Q94,41.7 98,46.5 Q102,50.9 106,45.7 Q110,43.1 114,46.5 Q118,50.9 122,46.4 Q126,41 130,46.5 Q134,49.6 138,45.6"/><path class="scr" d="M26,69.1 Q30,65 34,68.3 Q38,74 42,69.6 Q46,65.7 50,69.7 Q54,71.6 58,69.3 Q62,64.2 66,69.2 Q70,73.3 74,69.1 Q78,64.4 82,69 Q86,73.9 90,69.9 Q94,65.5 98,69.6 Q102,72.8 106,68.6"/><path class="scr" d="M26,92.2 Q30,89.5 34,91.4 Q38,96.7 42,91.5 Q46,88.8 50,92.2 Q54,95.6 58,92.1 Q62,89.4 66,92 Q70,95.1 74,92.3 Q78,88.3 82,92.8 Q86,94.9 90,92.9 Q94,87.2 98,92.6 Q102,96.1 106,91.9 Q110,87.5 114,92.4 Q118,95.9 122,91.8"/><path class="scr hlp" d="M26,100 L102,99"/></g><path class="iarrow" d="M196,66 C272,66 295.4,110 295.4,177"/><polygon class="ah" points="295.4,178 291.5,171 299.2,171"/><path class="pulse p0" pathLength="100" d="M196,66 C272,66 295.4,110 295.4,177"/><circle class="dot" cx="509.2" cy="200" r="2.6"/><line class="lead" x1="509.2" y1="200" x2="537" y2="200"/><text x="547" y="204" class="t-lab">CLIENT APPS</text><text x="547" y="221" class="t-det">Web + native iOS</text><rect class="tune" x="547" y="229" width="8.4" height="8.4"/><text x="560.8" y="238" class="t-det">real-time via SSE</text><circle class="dot" cx="509.2" cy="280" r="2.6"/><line class="lead" x1="509.2" y1="280" x2="537" y2="280"/><text x="547" y="284" class="t-lab">EDGE</text><text x="547" y="301" class="t-det">CloudFront CDN</text><rect class="tune" x="547" y="309" width="8.4" height="8.4"/><text x="560.8" y="318" class="t-det">media cached at edge</text><circle class="dot" cx="509.2" cy="360" r="2.6"/><line class="lead" x1="509.2" y1="360" x2="537" y2="360"/><text x="547" y="364" class="t-lab">SERVICES</text><text x="547" y="381" class="t-det">Flask · Spring · Node.js</text><rect class="tune" x="547" y="389" width="8.4" height="8.4"/><text x="560.8" y="398" class="t-det">Redis caching</text><circle class="dot" cx="509.2" cy="440" r="2.6"/><line class="lead" x1="509.2" y1="440" x2="537" y2="440"/><text x="547" y="444" class="t-lab">QUEUE</text><text x="547" y="461" class="t-det">Kafka</text><rect class="tune" x="547" y="469" width="8.4" height="8.4"/><text x="560.8" y="478" class="t-det">async, decoupled</text><circle class="dot" cx="509.2" cy="520" r="2.6"/><line class="lead" x1="509.2" y1="520" x2="537" y2="520"/><text x="547" y="524" class="t-lab">DATA</text><text x="547" y="541" class="t-det">PostgreSQL · MongoDB</text><rect class="tune" x="547" y="549" width="8.4" height="8.4"/><text x="560.8" y="558" class="t-det">tuned queries</text><circle class="dot" cx="513" cy="612.3" r="2.6"/><line class="lead" x1="513" y1="612.3" x2="537" y2="612.3"/><text x="547" y="616.3" class="t-lab">RUNS ON</text><text x="547" y="633.3" class="t-det">AWS · Docker · Kubernetes</text><rect class="tune" x="547" y="641.3" width="8.4" height="8.4"/><text x="560.8" y="650.3" class="t-det">right-sized, monitored</text><g class="dim"><line x1="117" y1="200" x2="129" y2="200"/><line x1="117" y1="600" x2="129" y2="600"/><line x1="123" y1="200" x2="123" y2="300"/><line x1="123" y1="500" x2="123" y2="600"/><text x="123" y="400" class="t-dim" text-anchor="middle" transform="rotate(-90 123 400)" dy="4">ONE OWNER, END TO END</text></g></svg>
+      <svg class="dg hero-svg hero-m" viewBox="0 0 390 513" role="img" aria-label="Diagram: a sketched idea becomes a layered system. Client apps on web and iOS, a CloudFront CDN edge, services in Flask, Spring and Node.js with a Redis cache, a Kafka queue, and PostgreSQL and MongoDB data stores, all running on AWS with Docker and Kubernetes. A highlight marks the tuned part of every layer."><polygon class="ground" points="112,380.1 224.4,445 112,509.9 -0.4,445"/><line class="proj" x1="16.7" y1="395" x2="16.7" y2="445"/><line class="proj" x1="112" y1="450" x2="112" y2="500"/><line class="proj" x1="207.3" y1="395" x2="207.3" y2="445"/><g class="layer" data-l="4"><g class="bx slab"><polygon class="fl" points="16.7,389 112,444 112,450 16.7,395"/><polygon class="fr" points="207.3,389 112,444 112,450 207.3,395"/><polygon class="ft" points="112,334 207.3,389 112,444 16.7,389"/></g><polygon class="flash f4" points="112,334 207.3,389 112,444 16.7,389"/><g class="cy "><path class="fl" d="M97.2,340.6 L97.2,360.4 A14.8,8.6 0 0 0 126.8,360.4 L126.8,340.6 Z"/><ellipse class="ft" cx="112" cy="340.6" rx="14.8" ry="8.6"/></g><g class="cy hl"><path class="fl" d="M130.5,359.9 L130.5,379.6 A14.8,8.6 0 0 0 160.2,379.6 L160.2,359.9 Z"/><ellipse class="ft" cx="145.3" cy="359.9" rx="14.8" ry="8.6"/></g><g class="cy "><path class="fl" d="M63.8,359.9 L63.8,379.6 A14.8,8.6 0 0 0 93.5,379.6 L93.5,359.9 Z"/><ellipse class="ft" cx="78.7" cy="359.9" rx="14.8" ry="8.6"/></g></g><line class="conn" x1="135.8" y1="365.8" x2="135.8" y2="413.8"/><polygon class="ah" points="135.8,396.1 133.5,391.9 138.1,391.9"/><path class="pulse p4" pathLength="100" d="M135.8,365.8 L135.8,413.8"/><line class="conn" x1="88.2" y1="365.8" x2="88.2" y2="413.8"/><polygon class="ah" points="88.2,388.1 90.5,392.4 85.9,392.4"/><ellipse class="port" cx="135.8" cy="413.8" rx="2.7" ry="1.6"/><g class="layer" data-l="3"><g class="bx slab"><polygon class="fl" points="16.7,335 112,390 112,396 16.7,341"/><polygon class="fr" points="207.3,335 112,390 112,396 207.3,341"/><polygon class="ft" points="112,280 207.3,335 112,390 16.7,335"/></g><polygon class="flash f3" points="112,280 207.3,335 112,390 16.7,335"/><g class="bx "><polygon class="fl" points="83.4,305.3 164.4,352.1 164.4,354.3 83.4,307.5"/><polygon class="fr" points="173,347.1 164.4,352.1 164.4,354.3 173,349.3"/><polygon class="ft" points="92,300.4 173,347.1 164.4,352.1 83.4,305.3"/></g><g class="bx "><polygon class="fl" points="87.2,295.4 92,298.2 92,311.4 87.2,308.6"/><polygon class="fr" points="102.5,292.1 92,298.2 92,311.4 102.5,305.3"/><polygon class="ft" points="97.7,289.4 102.5,292.1 92,298.2 87.2,295.4"/></g><g class="bx "><polygon class="fl" points="99.6,302.6 104.4,305.3 104.4,318.5 99.6,315.8"/><polygon class="fr" points="114.9,299.3 104.4,305.3 104.4,318.5 114.9,312.5"/><polygon class="ft" points="110.1,296.5 114.9,299.3 104.4,305.3 99.6,302.6"/></g><g class="bx "><polygon class="fl" points="112,309.7 116.8,312.5 116.8,325.6 112,322.9"/><polygon class="fr" points="127.2,306.4 116.8,312.5 116.8,325.6 127.2,319.6"/><polygon class="ft" points="122.5,303.7 127.2,306.4 116.8,312.5 112,309.7"/></g><g class="bx "><polygon class="fl" points="124.4,316.9 129.1,319.6 129.1,332.8 124.4,330.1"/><polygon class="fr" points="139.6,313.6 129.1,319.6 129.1,332.8 139.6,326.8"/><polygon class="ft" points="134.9,310.8 139.6,313.6 129.1,319.6 124.4,316.9"/></g><g class="bx "><polygon class="fl" points="136.8,324 141.5,326.8 141.5,340 136.8,337.2"/><polygon class="fr" points="152,320.7 141.5,326.8 141.5,340 152,333.9"/><polygon class="ft" points="147.2,318 152,320.7 141.5,326.8 136.8,324"/></g><g class="bx hl"><polygon class="fl" points="149.2,331.2 153.9,333.9 153.9,347.1 149.2,344.4"/><polygon class="fr" points="164.4,327.9 153.9,333.9 153.9,347.1 164.4,341.1"/><polygon class="ft" points="159.6,325.1 164.4,327.9 153.9,333.9 149.2,331.2"/></g></g><line class="conn" x1="135.8" y1="311.8" x2="135.8" y2="359.8"/><polygon class="ah" points="135.8,342.1 133.5,337.9 138.1,337.9"/><path class="pulse p3" pathLength="100" d="M135.8,311.8 L135.8,359.8"/><line class="conn" x1="88.2" y1="311.8" x2="88.2" y2="359.8"/><polygon class="ah" points="88.2,334.1 90.5,338.4 85.9,338.4"/><ellipse class="port" cx="135.8" cy="359.8" rx="2.7" ry="1.6"/><g class="layer" data-l="2"><g class="bx slab"><polygon class="fl" points="16.7,281 112,336 112,342 16.7,287"/><polygon class="fr" points="207.3,281 112,336 112,342 207.3,287"/><polygon class="ft" points="112,226 207.3,281 112,336 16.7,281"/></g><polygon class="flash f2" points="112,226 207.3,281 112,336 16.7,281"/><g class="bx "><polygon class="fl" points="92,232.1 112,243.6 112,263.4 92,251.8"/><polygon class="fr" points="132,232.1 112,243.6 112,263.4 132,251.8"/><polygon class="ft" points="112,220.5 132,232.1 112,243.6 92,232.1"/></g><g class="bx "><polygon class="fl" points="125.3,251.3 145.3,262.9 145.3,282.6 125.3,271.1"/><polygon class="fr" points="165.3,251.3 145.3,262.9 145.3,282.6 165.3,271.1"/><polygon class="ft" points="145.3,239.8 165.3,251.3 145.3,262.9 125.3,251.3"/></g><g class="bx "><polygon class="fl" points="58.7,251.3 78.7,262.9 78.7,282.6 58.7,271.1"/><polygon class="fr" points="98.7,251.3 78.7,262.9 78.7,282.6 98.7,271.1"/><polygon class="ft" points="78.7,239.8 98.7,251.3 78.7,262.9 58.7,251.3"/></g><g class="bx hl"><polygon class="fl" points="92.9,284.3 112,295.3 112,300.3 92.9,289.3"/><polygon class="fr" points="131.1,284.3 112,295.3 112,300.3 131.1,289.3"/><polygon class="ft" points="112,273.3 131.1,284.3 112,295.3 92.9,284.3"/></g></g><line class="conn" x1="135.8" y1="257.8" x2="135.8" y2="305.8"/><polygon class="ah" points="135.8,288.1 133.5,283.9 138.1,283.9"/><path class="pulse p2" pathLength="100" d="M135.8,257.8 L135.8,305.8"/><line class="conn" x1="88.2" y1="257.8" x2="88.2" y2="305.8"/><polygon class="ah" points="88.2,280.1 90.5,284.4 85.9,284.4"/><ellipse class="port" cx="135.8" cy="305.8" rx="2.7" ry="1.6"/><g class="layer" data-l="1"><g class="bx slab"><polygon class="fl" points="16.7,227 112,282 112,288 16.7,233"/><polygon class="fr" points="207.3,227 112,282 112,288 207.3,233"/><polygon class="ft" points="112,172 207.3,227 112,282 16.7,227"/></g><polygon class="flash f1" points="112,172 207.3,227 112,282 16.7,227"/><g class="bx "><polygon class="fl" points="102.5,190.7 112,196.2 112,202.8 102.5,197.3"/><polygon class="fr" points="121.5,190.7 112,196.2 112,202.8 121.5,197.3"/><polygon class="ft" points="112,185.2 121.5,190.7 112,196.2 102.5,190.7"/></g><g class="bx "><polygon class="fl" points="121.5,201.7 131.1,207.2 131.1,213.8 121.5,208.3"/><polygon class="fr" points="140.6,201.7 131.1,207.2 131.1,213.8 140.6,208.3"/><polygon class="ft" points="131.1,196.2 140.6,201.7 131.1,207.2 121.5,201.7"/></g><g class="bx "><polygon class="fl" points="140.6,212.7 150.1,218.2 150.1,224.8 140.6,219.3"/><polygon class="fr" points="159.6,212.7 150.1,218.2 150.1,224.8 159.6,219.3"/><polygon class="ft" points="150.1,207.2 159.6,212.7 150.1,218.2 140.6,212.7"/></g><g class="bx "><polygon class="fl" points="83.4,201.7 92.9,207.2 92.9,213.8 83.4,208.3"/><polygon class="fr" points="102.5,201.7 92.9,207.2 92.9,213.8 102.5,208.3"/><polygon class="ft" points="92.9,196.2 102.5,201.7 92.9,207.2 83.4,201.7"/></g><g class="bx "><polygon class="fl" points="102.5,212.7 112,218.2 112,224.8 102.5,219.3"/><polygon class="fr" points="121.5,212.7 112,218.2 112,224.8 121.5,219.3"/><polygon class="ft" points="112,207.2 121.5,212.7 112,218.2 102.5,212.7"/></g><g class="bx "><polygon class="fl" points="121.5,223.7 131.1,229.2 131.1,235.8 121.5,230.3"/><polygon class="fr" points="140.6,223.7 131.1,229.2 131.1,235.8 140.6,230.3"/><polygon class="ft" points="131.1,218.2 140.6,223.7 131.1,229.2 121.5,223.7"/></g><g class="bx "><polygon class="fl" points="64.4,212.7 73.9,218.2 73.9,224.8 64.4,219.3"/><polygon class="fr" points="83.4,212.7 73.9,218.2 73.9,224.8 83.4,219.3"/><polygon class="ft" points="73.9,207.2 83.4,212.7 73.9,218.2 64.4,212.7"/></g><g class="bx "><polygon class="fl" points="83.4,223.7 92.9,229.2 92.9,235.8 83.4,230.3"/><polygon class="fr" points="102.5,223.7 92.9,229.2 92.9,235.8 102.5,230.3"/><polygon class="ft" points="92.9,218.2 102.5,223.7 92.9,229.2 83.4,223.7"/></g><g class="bx hl"><polygon class="fl" points="102.5,234.7 112,240.2 112,246.8 102.5,241.3"/><polygon class="fr" points="121.5,234.7 112,240.2 112,246.8 121.5,241.3"/><polygon class="ft" points="112,229.2 121.5,234.7 112,240.2 102.5,234.7"/></g></g><line class="conn" x1="135.8" y1="203.8" x2="135.8" y2="251.8"/><polygon class="ah" points="135.8,234.2 133.5,229.9 138.1,229.9"/><path class="pulse p1" pathLength="100" d="M135.8,203.8 L135.8,251.8"/><line class="conn" x1="88.2" y1="203.8" x2="88.2" y2="251.8"/><polygon class="ah" points="88.2,226.2 90.5,230.4 85.9,230.4"/><ellipse class="port" cx="135.8" cy="251.8" rx="2.7" ry="1.6"/><g class="layer" data-l="0"><g class="bx slab"><polygon class="fl" points="16.7,173 112,228 112,234 16.7,179"/><polygon class="fr" points="207.3,173 112,228 112,234 207.3,179"/><polygon class="ft" points="112,118 207.3,173 112,228 16.7,173"/></g><polygon class="flash f0" points="112,118 207.3,173 112,228 16.7,173"/><g class="bx dev"><polygon class="fl" points="121.5,118 159.6,140 159.6,167.5 121.5,145.5"/><polygon class="fr" points="164.4,137.3 159.6,140 159.6,167.5 164.4,164.8"/><polygon class="ft" points="126.3,115.3 164.4,137.3 159.6,140 121.5,118"/></g><polygon class="scrn" points="123.9,122.1 157.2,141.4 157.2,163.4 123.9,144.1"/><polygon class="scrn-bar" points="123.9,122.1 157.2,141.4 157.2,145.2 123.9,126"/><g class="bx dev"><polygon class="fl" points="62.5,132.3 67.2,135.1 67.2,165.9 62.5,163.1"/><polygon class="fr" points="83.4,125.7 67.2,135.1 67.2,165.9 83.4,156.5"/><polygon class="ft" points="78.7,122.9 83.4,125.7 67.2,135.1 62.5,132.3"/></g><polygon class="scrn" points="81,129.8 69.6,136.4 69.6,161.7 81,155.1"/></g><g class="idea"><text x="238" y="14" class="t-lab">YOUR IDEA</text><path class="sk" d="M233.4,22.6 Q306,23.7 380.1,23.7 M373.9,19.3 Q373.9,56 373.2,93.6 M378.3,89 Q306,88.7 232.6,86.8 M238.3,92.2 Q236.3,56 237.9,18.2 "/><path class="scr" d="M250,44 Q254,40.7 258,44.5 Q262,46.5 266,43.5 Q270,40.1 274,44.3 Q278,46.5 282,43.8 Q286,39.3 290,44 Q294,46.7 298,44.2 Q302,39.1 306,43.7 Q310,48.8 314,43.2 Q318,39.7 322,44.5 Q326,48.9 330,43.7"/><path class="scr" d="M250,58.6 Q254,55.7 258,59.1 Q262,63.5 266,59 Q270,53.6 274,59.1 Q278,62.2 282,58.2 Q286,54.6 290,57.9 Q294,63.5 298,59.1 Q302,55.2 306,59.2"/><path class="scr" d="M250,73.2 Q254,70.7 258,73.5 Q262,78.1 266,73.3 Q270,69 274,73.2 Q278,77.9 282,73.1 Q286,68.4 290,74 Q294,76.8 298,73.7 Q302,69.5 306,72.8 Q310,75.9 314,72.5 Q318,68.7 322,72.6"/><path class="scr hlp" d="M250,76 L306,75"/></g><path class="iarrow" d="M234,54 C176,54 92.9,104 92.9,159"/><polygon class="ah" points="92.9,160 89.1,153 96.8,153"/><path class="pulse p0" pathLength="100" d="M234,54 C176,54 92.9,104 92.9,159"/><circle class="dot" cx="213.3" cy="173" r="2.6"/><line class="lead" x1="213.3" y1="173" x2="223" y2="173"/><text x="233" y="177" class="t-lab">CLIENT APPS</text><text x="233" y="191.5" class="t-det">Web + native iOS</text><rect class="tune" x="233" y="198.1" width="7.3" height="7.3"/><text x="245.1" y="206" class="t-det">real-time (SSE)</text><circle class="dot" cx="213.3" cy="227" r="2.6"/><line class="lead" x1="213.3" y1="227" x2="223" y2="227"/><text x="233" y="231" class="t-lab">EDGE</text><text x="233" y="245.5" class="t-det">CloudFront CDN</text><rect class="tune" x="233" y="252.1" width="7.3" height="7.3"/><text x="245.1" y="260" class="t-det">cached at edge</text><circle class="dot" cx="213.3" cy="281" r="2.6"/><line class="lead" x1="213.3" y1="281" x2="223" y2="281"/><text x="233" y="285" class="t-lab">SERVICES</text><text x="233" y="299.5" class="t-det">Flask, Spring, Node</text><rect class="tune" x="233" y="306.1" width="7.3" height="7.3"/><text x="245.1" y="314" class="t-det">Redis caching</text><circle class="dot" cx="213.3" cy="335" r="2.6"/><line class="lead" x1="213.3" y1="335" x2="223" y2="335"/><text x="233" y="339" class="t-lab">QUEUE</text><text x="233" y="353.5" class="t-det">Kafka</text><rect class="tune" x="233" y="360.1" width="7.3" height="7.3"/><text x="245.1" y="368" class="t-det">async, decoupled</text><circle class="dot" cx="213.3" cy="389" r="2.6"/><line class="lead" x1="213.3" y1="389" x2="223" y2="389"/><text x="233" y="393" class="t-lab">DATA</text><text x="233" y="407.5" class="t-det">PostgreSQL, MongoDB</text><rect class="tune" x="233" y="414.1" width="7.3" height="7.3"/><text x="245.1" y="422" class="t-det">tuned queries</text><circle class="dot" cx="199" cy="459.7" r="2.6"/><line class="lead" x1="199" y1="459.7" x2="223" y2="459.7"/><text x="233" y="463.7" class="t-lab">RUNS ON</text><text x="233" y="478.2" class="t-det">AWS, Docker, K8s</text><rect class="tune" x="233" y="484.8" width="7.3" height="7.3"/><text x="245.1" y="492.7" class="t-det">right-sized</text></svg>
+      <figcaption><span>Your idea, exploded into the layers I build</span><span class="legend"><i></i>Tuned</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="how" aria-labelledby="how-h">
+    <div class="sec-head">
+      <p class="kicker">How I help</p>
+      <h2 id="how-h"><span class="raw">Bring the sketch.</span> <span class="res">Leave with the <span class="hl">product.</span></span></h2>
+    </div>
+    <figure class="plate rev-fig" id="rev-fig" data-rev="e">
+      <div class="rev">
+        <div class="rev-draw"><svg class="dg rev-svg" viewBox="0 0 420 428" role="img" aria-label="A booking app for web and iPhone, drawn at the selected revision: a pencil sketch, a wireframe with its data model, finished screens joined to an API, tuned parts marked in yellow, or running with CI/CD, containers and monitoring."><g class="ly l-a"><path class="pn" d="M4.7,24.1 Q161,21.6 317.4,22.9 M314.3,21 Q316.1,143 314.8,267.1 M316.4,261.2 Q161,260.5 3.8,261.2 M8.2,265.7 Q9.6,143 8.1,19.8 "/><path class="pn" d="M14,44 Q23,42.8 32,43.5 Q41,44.9 50,43.4 Q59,42.7 68,43.5 Q77,45.5 86,44 Q95,43.2 104,43.4 Q113,45.5 122,44.1 Q131,42.8 140,43.9 Q149,45.4 158,43.9 Q167,42.7 176,44.1 Q185,45.3 194,43.8 Q203,42.4 212,44.2 Q221,45.2 230,43.8 Q239,43 248,43.4 Q257,45.3 266,44.7 Q275,42.8 284,43.8 Q293,45 302,44.5"/><path class="pn thick" d="M28,66 Q32,63.1 36,66.2 Q40,70.6 44,65.9 Q48,61.7 52,66.1 Q56,70.5 60,65.8 Q64,61.9 68,65.8 Q72,68.7 76,65.4 Q80,61.7 84,66.3 Q88,69.6 92,66.5 Q96,62.7 100,65.3 Q104,68.8 108,66.3 Q112,62.1 116,65.5 Q120,69.6 124,66.3 Q128,63.5 132,66.5 Q136,69.3 140,66.5 Q144,61.3 148,66"/><path class="pn" d="M25.9,89.9 Q46,90.7 67.7,89.1 M64.2,86.9 Q65.7,105 64,123.7 M66.7,120.5 Q46,119.8 24.2,119.2 M27.9,123.5 Q28.1,105 27.6,85.9 "/><path class="pn" d="M71.5,90 Q92,88.8 113.8,89.7 M109.9,88 Q109.3,105 109.2,123.6 M113.2,119.7 Q92,119.9 70.1,120 M73.8,124 Q72.6,105 73.9,86.3 "/><path class="pn" d="M117,89.8 Q138,91.7 160,89.9 M156.6,86.8 Q155.7,105 156.2,123.8 M159.6,119.5 Q138,118 116.3,119.2 M119.7,122.9 Q121.6,105 120.8,86.9 "/><path class="pn" d="M163.4,90.9 Q184,89.9 206.9,90.3 M202.6,86.6 Q201.4,105 202.6,123.9 M204.3,120.4 Q184,120.5 162.3,119.8 M165.1,122.9 Q167.3,105 165.1,85.8 "/><path class="pn" d="M209.9,90.9 Q230,89.7 252.3,90.8 M248.7,87.3 Q247,105 248.6,124.6 M251.7,120.1 Q230,119.5 207.2,120.9 M212.4,123.9 Q213.4,105 212.2,86.3 "/><path class="pn" d="M22.7,134.1 Q138,136 253.3,133 M251.4,130.9 Q252.3,173 249.8,215.3 M252.7,210.8 Q138,212.4 22.5,212 M25.6,215.5 Q25.5,173 26.3,128.8 "/><path class="pn" d="M36,146 Q39.5,142.6 43,146 Q46.5,148.7 50,145.6 Q53.5,143.6 57,146.4 Q60.5,149.5 64,145.7 Q67.5,143.7 71,146.5 Q74.5,148.3 78,145.5 Q81.5,142.8 85,146.1 Q88.5,148.5 92,146.5 Q95.5,142.4 99,146 Q102.5,148.7 106,145.5 Q109.5,144.2 113,145.3 Q116.5,149.2 120,146.3 Q123.5,143.6 127,146.2 Q130.5,149.1 134,146.2 Q137.5,142.9 141,145.6 Q144.5,148.3 148,145.4 Q151.5,143.9 155,146.5 Q158.5,148.8 162,146 Q165.5,142.5 169,146.6 Q172.5,149.4 176,146.6 Q179.5,142.6 183,146.4"/><path class="pn" d="M36,166 Q39.5,162.5 43,165.6 Q46.5,169.5 50,166 Q53.5,162.6 57,165.3 Q60.5,169.1 64,166 Q67.5,163.4 71,165.7 Q74.5,168.5 78,166.2 Q81.5,163.1 85,166.5 Q88.5,168 92,165.5 Q95.5,162.7 99,165.4 Q102.5,167.9 106,166.2 Q109.5,162.9 113,166.6 Q116.5,168.5 120,165.8 Q123.5,164.1 127,166.1 Q130.5,167.8 134,165.7 Q137.5,164.2 141,165.7 Q144.5,168.5 148,166.1 Q151.5,163.7 155,166.4"/><path class="pn" d="M36,186 Q39.5,183.8 43,185.8 Q46.5,188 50,186.3 Q53.5,183.2 57,185.4 Q60.5,189.1 64,186 Q67.5,183.2 71,185.5 Q74.5,188.3 78,186.3 Q81.5,183.9 85,186.4 Q88.5,189.1 92,186.4 Q95.5,182.4 99,185.7 Q102.5,188 106,185.5 Q109.5,183.9 113,186 Q116.5,189.4 120,186.6 Q123.5,182.5 127,186 Q130.5,187.9 134,185.7 Q137.5,182.5 141,186.6 Q144.5,188.6 148,186.4 Q151.5,183.3 155,186.5 Q158.5,188.6 162,186.1 Q165.5,182.7 169,186.4 Q172.5,188.8 176,186.3 Q179.5,183.1 183,186.2 Q186.5,188.5 190,186.1 Q193.5,182.6 197,185.6 Q200.5,188.2 204,186.6"/><path class="pn" d="M36,202 Q39.5,199 43,201.9 Q46.5,204.5 50,202.6 Q53.5,199.4 57,201.3 Q60.5,203.9 64,201.8 Q67.5,199.6 71,202.4 Q74.5,204.8 78,201.5 Q81.5,200 85,201.7 Q88.5,205 92,201.9 Q95.5,198.5 99,202 Q102.5,205.2 106,202 Q109.5,198.9 113,201.7 Q116.5,204.3 120,201.4"/><path class="pn" d="M23.7,220.8 Q138,220.9 253.8,221.6 M249.8,219.8 Q247.8,234 250.6,250.7 M251.9,245.2 Q138,247.6 21.9,247 M27.1,250.1 Q26.2,234 26.9,217.8 "/><path class="pn" d="M110,234 Q113.5,232.1 117,233.7 Q120.5,236.2 124,233.9 Q127.5,231.2 131,234.1 Q134.5,236.8 138,233.5 Q141.5,232.1 145,233.8 Q148.5,237.2 152,234.5 Q155.5,232.3 159,233.7 Q162.5,236.6 166,234.3"/><path class="pn" d="M270.1,59.3 Q340,59.8 410,59.2 M406.2,54.1 Q407.3,194 407.3,333.4 M408.5,330.5 Q340,329.4 269.9,328.8 M274.5,332.4 Q275.1,194 273.3,55.3 "/><path class="pn thick" d="M290,102 Q294,98.8 298,101.8 Q302,105.6 306,102.4 Q310,99.2 314,101.8 Q318,104.2 322,101.5 Q326,98 330,102.6 Q334,105.4 338,102.6 Q342,99.6 346,101.7 Q350,104.8 354,102.6"/><path class="pn" d="M285.5,118.4 Q340,119.3 396.3,118 M391,114.5 Q389.6,158 392.4,202.8 M394.1,196.9 Q340,197.6 284.7,199 M288.3,200.4 Q290,158 288.8,113.7 "/><path class="pn" d="M298,188 C312,164 300,150 326,146 S356,138 376,128"/><path class="pn" d="M370,122 l12,12 M382,122 l-12,12"/><path class="pn" d="M292,214 Q295.5,211.3 299,214.5 Q302.5,216.2 306,214.3 Q309.5,211.6 313,214.4 Q316.5,216 320,214.3 Q323.5,211.6 327,213.6 Q330.5,216.3 334,214.2 Q337.5,211.8 341,214.5 Q344.5,216.1 348,213.4 Q351.5,210.9 355,213.3 Q358.5,215.9 362,214.1 Q365.5,212.1 369,213.8 Q372.5,215.6 376,214.4"/><path class="pn" d="M292,230 Q295.5,228.2 299,230.2 Q302.5,231.8 306,229.6 Q309.5,227 313,230.5 Q316.5,231.8 320,229.7 Q323.5,228.4 327,229.9 Q330.5,232.6 334,230.1 Q337.5,227.7 341,229.6 Q344.5,231.9 348,230.6 Q351.5,227.2 355,230 Q358.5,231.9 362,230 Q365.5,227.2 369,230.1 Q372.5,232 376,229.4"/><path class="pn" d="M292,246 Q295.5,243.2 299,246.6 Q302.5,248.5 306,246.2 Q309.5,244.1 313,246.5 Q316.5,248.6 320,246.5 Q323.5,244.2 327,246.3 Q330.5,249.1 334,245.9 Q337.5,243.8 341,246 Q344.5,248.8 348,246 Q351.5,243.7 355,245.7 Q358.5,247.7 362,245.9 Q365.5,244 369,245.4 Q372.5,249.1 376,246"/><path class="pn" d="M284.8,291.9 Q340,291.1 395.4,292.1 M392.9,289.4 Q389.9,304 391.8,321.1 M394.7,316.9 Q340,317.8 284.3,315.7 M288.9,319.2 Q285.8,304 287.7,287.5 "/><text x="334" y="310" class="t-pq">?</text><text x="252" y="60" class="t-pq">?</text><text x="196" y="236" class="t-pq">?</text><path class="pn" d="M252,236 C262,256 270,284 284,298"/><path class="pn" d="M276,296 l9,3 l-2,-9"/></g><g class="ly l-b"><rect class="wf" x="8" y="24" width="306" height="238" rx="6"/><rect class="wf" x="26" y="58" width="130" height="18"/><text x="32" y="71.5" class="t-wf">TITLE</text><rect class="wf" x="26" y="88" width="224" height="34"/><text x="34" y="109" class="t-wf">DAYS</text><rect class="wf" x="26" y="134" width="224" height="78"/><text x="34" y="155" class="t-wf">SLOTS</text><rect class="wf" x="26" y="222" width="224" height="24"/><text x="34" y="238.5" class="t-wf">CONFIRM</text><rect class="wf" x="272" y="56" width="136" height="276" rx="18"/><rect class="wf" x="288" y="118" width="104" height="80"/><text x="296" y="138" class="t-wf">MAP</text><rect class="wf" x="288" y="206" width="104" height="48"/><text x="296" y="226" class="t-wf">SUMMARY</text><rect class="wf" x="288" y="292" width="104" height="24"/><text x="296" y="308.5" class="t-wf">PAY</text><rect class="wf" x="100" y="296" width="150" height="38"/><text x="110" y="319" class="t-wf">API</text><path class="wf" d="M175,262 V296 M250,315 H272"/><g class="dm"><line x1="8" y1="10" x2="150" y2="10"/><line x1="266" y1="10" x2="408" y2="10"/><line x1="8" y1="4" x2="8" y2="16"/><line x1="408" y1="4" x2="408" y2="16"/></g><text x="208" y="14" class="t-dm" text-anchor="middle">V1 SCOPE</text></g><g class="ly l-m"><path class="ml" d="M42,303 H54 M25,316 L40,332 M71,316 L56,332"/><rect class="tb-r" x="8" y="290" width="34" height="26"/><rect class="tb-h" x="8" y="290" width="34" height="7"/><path class="ml" d="M13,304 H34 M13,310 H30"/><rect class="tb-r" x="54" y="290" width="34" height="26"/><rect class="tb-h" x="54" y="290" width="34" height="7"/><path class="ml" d="M59,304 H80 M59,310 H76"/><rect class="tb-r" x="31" y="332" width="34" height="26"/><rect class="tb-h" x="31" y="332" width="34" height="7"/><path class="ml" d="M36,346 H57 M36,352 H53"/><text x="8" y="378" class="t-lb">DATA MODEL</text></g><g class="ly l-c"><rect class="dv" x="8" y="24" width="306" height="238" rx="6"/><path class="rl" d="M8,44 H314"/><circle class="ph" cx="20" cy="34" r="3"/><circle class="ph" cx="30" cy="34" r="3"/><circle class="ph" cx="40" cy="34" r="3"/><rect class="ph" x="84" y="29" width="140" height="10" rx="5"/><text x="26" y="74" class="t-ui">Book a session</text><rect class="chip" x="26" y="88" width="40" height="34" rx="4"/><text x="46" y="101" class="t-cd" text-anchor="middle">MON</text><text x="46" y="116" class="t-cn" text-anchor="middle">12</text><rect class="chip" x="72" y="88" width="40" height="34" rx="4"/><text x="92" y="101" class="t-cd" text-anchor="middle">TUE</text><text x="92" y="116" class="t-cn" text-anchor="middle">13</text><rect class="ink" x="118" y="88" width="40" height="34" rx="4"/><text x="138" y="101" class="t-cd inv" text-anchor="middle">WED</text><text x="138" y="116" class="t-cn inv" text-anchor="middle">14</text><rect class="chip" x="164" y="88" width="40" height="34" rx="4"/><text x="184" y="101" class="t-cd" text-anchor="middle">THU</text><text x="184" y="116" class="t-cn" text-anchor="middle">15</text><rect class="chip" x="210" y="88" width="40" height="34" rx="4"/><text x="230" y="101" class="t-cd" text-anchor="middle">FRI</text><text x="230" y="116" class="t-cn" text-anchor="middle">16</text><rect class="slot" x="26" y="134" width="70" height="22" rx="3"/><text x="61" y="149" class="t-sl" text-anchor="middle">9:00</text><rect class="slot" x="103" y="134" width="70" height="22" rx="3"/><text x="138" y="149" class="t-sl" text-anchor="middle">9:30</text><rect class="slot" x="180" y="134" width="70" height="22" rx="3"/><text x="215" y="149" class="t-sl" text-anchor="middle">10:00</text><rect class="slot" x="26" y="162" width="70" height="22" rx="3"/><text x="61" y="177" class="t-sl" text-anchor="middle">10:30</text><rect class="slot on" x="103" y="162" width="70" height="22" rx="3"/><text x="138" y="177" class="t-sl" text-anchor="middle">11:00</text><rect class="slot" x="180" y="162" width="70" height="22" rx="3"/><text x="215" y="177" class="t-sl" text-anchor="middle">11:30</text><rect class="slot" x="26" y="190" width="70" height="22" rx="3"/><text x="61" y="205" class="t-sl" text-anchor="middle">13:00</text><rect class="slot" x="103" y="190" width="70" height="22" rx="3"/><text x="138" y="205" class="t-sl" text-anchor="middle">13:30</text><rect class="slot" x="180" y="190" width="70" height="22" rx="3"/><text x="215" y="205" class="t-sl" text-anchor="middle">14:00</text><rect class="ink" x="26" y="222" width="224" height="24" rx="4"/><text x="138" y="238" class="t-bt inv" text-anchor="middle">Confirm 11:00</text><rect class="dv" x="272" y="56" width="136" height="276" rx="18"/><rect class="ink" x="320" y="64" width="40" height="6" rx="3"/><text x="288" y="94" class="t-cd">WED 14 · 11:00</text><text x="288" y="110" class="t-ui2">Your session</text><rect class="mapf" x="288" y="118" width="104" height="80" rx="4"/><path class="road" d="M288,160 H392 M334,118 V198 M288,190 L392,134"/><path class="route" d="M298,188 C312,164 300,150 326,146 S356,138 376,128"/><circle class="ink" cx="298" cy="188" r="3.2"/><circle class="live" cx="376" cy="128" r="7"/><circle class="ink" cx="376" cy="128" r="3"/><rect class="ph" x="288" y="210" width="52" height="5" rx="2"/><rect class="ph" x="360" y="210" width="32" height="5" rx="2"/><rect class="ph" x="288" y="224" width="40" height="5" rx="2"/><rect class="ph" x="360" y="224" width="32" height="5" rx="2"/><path class="rl" d="M288,238 H392"/><text x="288" y="256" class="t-ui3">Total</text><rect class="ink" x="352" y="248" width="40" height="8" rx="2"/><rect class="ink" x="288" y="292" width="104" height="24" rx="4"/><text x="340" y="308" class="t-bt inv" text-anchor="middle">Pay</text><path class="wire2" d="M175,262 V296 M250,315 H272"/><rect class="apib" x="100" y="296" width="150" height="38" rx="3"/><text x="110" y="312" class="t-ui3">API</text><text x="110" y="326" class="t-api">Flask · Spring · Node.js</text><circle class="prt" cx="175" cy="262" r="3"/><circle class="prt" cx="175" cy="296" r="3"/><circle class="prt" cx="250" cy="315" r="3"/><circle class="prt" cx="272" cy="315" r="3"/></g><g class="ly l-d"><rect class="tn-bar" x="18" y="134" width="4" height="78"/><g class="tg "><rect x="180" y="121" width="50" height="17" rx="1.5"/><text x="186" y="133.6" class="t-tag">REDIS</text></g><g class="tg "><rect x="294" y="124" width="34.8" height="17" rx="1.5"/><text x="300" y="136.6" class="t-tag">CDN</text></g><rect class="tn-slab" x="104" y="334" width="142" height="5"/><g class="tg "><rect x="196" y="287" width="34.8" height="17" rx="1.5"/><text x="202" y="299.6" class="t-tag">SQL</text></g></g><g class="ly l-e"><path class="rn" d="M128,392 H176"/><circle class="ci" cx="128" cy="392" r="9"/><path class="tick" d="M124,392 l3,3 l6,-7"/><circle class="ci" cx="152" cy="392" r="9"/><path class="tick" d="M148,392 l3,3 l6,-7"/><circle class="ci on" cx="176" cy="392" r="9"/><path class="tick inv-s" d="M172,392 l3,3 l6,-7"/><text x="119" y="418" class="t-lb">CI/CD</text><rect class="ct" x="206" y="382" width="16" height="16" rx="1.5"/><rect class="ct" x="226" y="382" width="16" height="16" rx="1.5"/><rect class="ct" x="246" y="382" width="16" height="16" rx="1.5"/><rect class="ct ghost" x="266" y="382" width="16" height="16" rx="1.5"/><text x="206" y="418" class="t-lb">K8S</text><path class="hb" d="M300,392 H330 L336,380 L344,404 L350,385 L354,392 H402"/><circle class="live" cx="408" cy="392" r="5"/><text x="300" y="418" class="t-lb">GRAFANA</text></g></svg></div>
+        <fieldset class="rvt">
+          <legend class="vh">Show the drawing at a revision</legend>
+          <div class="rvt-head" aria-hidden="true"><span>Rev</span><span>Change</span><span>By</span></div>
+          <label class="rv rv-you" for="rev-a"><input type="radio" name="rev" id="rev-a" value="a"><span class="rv-box"><span class="rv-l">A</span><span class="rv-t"><b>Your sketch</b><span>An idea and rough screens.</span></span><span class="rv-by">You</span></span></label>
+          <label class="rv" for="rev-b"><input type="radio" name="rev" id="rev-b" value="b"><span class="rv-box"><span class="rv-l">B</span><span class="rv-t"><b>Shape</b><span>Scope, architecture and the data model.</span></span><span class="rv-by">Jay</span></span></label>
+          <label class="rv" for="rev-c"><input type="radio" name="rev" id="rev-c" value="c"><span class="rv-box"><span class="rv-l">C</span><span class="rv-t"><b>Build</b><span>Web and iOS apps. Flask, Spring and Node.js APIs.</span></span><span class="rv-by">Jay</span></span></label>
+          <label class="rv" for="rev-d"><input type="radio" name="rev" id="rev-d" value="d"><span class="rv-box"><span class="rv-l">D</span><span class="rv-t"><b>Tune</b><span>Query tuning, Redis caching, CloudFront CDN, right-sized AWS.</span></span><span class="rv-by">Jay</span></span></label>
+          <label class="rv" for="rev-e"><input type="radio" name="rev" id="rev-e" value="e" checked><span class="rv-box"><span class="rv-l">E</span><span class="rv-t"><b>Run</b><span>CI/CD, Docker, Kubernetes. Watched in Grafana, Splunk and ELK.</span></span><span class="rv-by">Jay</span></span></label>
+        </fieldset>
+      </div>
+      <figcaption><span id="rev-cap">One product, drawn at five revisions</span><span id="rev-status">Rev E · Running</span><span class="legend"><i></i>Tuned</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="platform" aria-labelledby="plat-h">
+    <div class="sec-head">
+      <p class="kicker">Recent work · Project Watershed · 2025 to now</p>
+      <h2 id="plat-h"><span class="raw">AI built it.</span> <span class="res">You can <span class="hl">still read it.</span></span></h2>
+      <p class="lede">Project Watershed is a customizable, scalable data platform for any scenario. My team and I built it at TigmaMinds. AI builds each pipeline from blocks anyone can read and change.</p>
+    </div>
+    <div class="compare">
+      <figure class="plate side bb">
+        <div class="side-head"><div><p class="tag">Typical AI-generated code</p><p class="note">Fast to make. Nobody knows what's inside.</p></div></div>
+        <svg class="dg bb-svg" viewBox="0 72 360 256" role="img" aria-label="A sealed box. Four inputs go in, three outputs come out marked with question marks, and the inside is a tangle of lines nobody can follow."><line class="wire" x1="14" y1="132" x2="70" y2="132"/><circle class="port" cx="14" cy="132" r="3.5"/><line class="wire" x1="14" y1="178" x2="70" y2="178"/><circle class="port" cx="14" cy="178" r="3.5"/><line class="wire" x1="14" y1="224" x2="70" y2="224"/><circle class="port" cx="14" cy="224" r="3.5"/><line class="wire" x1="14" y1="270" x2="70" y2="270"/><circle class="port" cx="14" cy="270" r="3.5"/><line class="wire" x1="290" y1="154" x2="336" y2="154"/><text x="346" y="159" class="t-q" text-anchor="middle">?</text><line class="wire" x1="290" y1="200" x2="336" y2="200"/><text x="346" y="205" class="t-q" text-anchor="middle">?</text><line class="wire" x1="290" y1="246" x2="336" y2="246"/><text x="346" y="251" class="t-q" text-anchor="middle">?</text><rect class="void" x="70" y="84" width="220" height="232" rx="2"/><path class="tangle" d="M88,230.9 C111.9,219 210.8,177.9 231.2,159.5 C251.5,141.1 226.8,117.3 210.1,120.6 C193.5,123.9 139.5,160.4 131.3,179.3 C123.1,198.2 140,227.4 161,234 C181.9,240.6 264.2,235.4 256.8,219 C249.4,202.7 136.4,134.2 116.5,135.9 C96.5,137.6 131,233.5 137.2,229.1 C143.3,224.7 133.5,119.8 153.5,109.5 C173.4,99.3 265,154.6 256.7,167.5 C248.5,180.4 103.2,176.7 104.1,187 C104.9,197.4 257.5,223.3 261.9,229.8 C266.3,236.4 145.3,238.9 130.5,226.4 C115.6,213.9 177.2,159 172.6,154.8 C168,150.6 99.9,183.5 102.7,201.2 C105.5,218.9 182.4,269.7 189.5,261 C196.6,252.2 141.5,154.1 145.5,148.5 C149.4,143 217.8,209.9 213.2,227.7 C208.6,245.5 109.6,249.2 118,255.3 C126.5,261.3 261.5,259.8 263.8,264 C266,268.3 141.8,282.9 131.3,280.9 C120.8,278.9 200.2,270.2 200.8,252.3 C201.5,234.3 149.4,184.4 135.4,173.2 C121.4,162 113.9,190.9 117.1,185 C120.4,179.1 134.2,138.8 154.9,137.7 C175.6,136.5 246.5,171.9 241.2,178.2 C235.8,184.5 123.9,160.9 122.8,175.4 C121.6,189.9 227,261.5 234.5,265.2 C242,268.9 175.3,215 167.6,197.7 C159.9,180.4 185.7,160.2 188.5,161.4 C191.3,162.5 183.2,194.9 184.3,204.4 C185.4,214 182.4,220.4 195,218.7 C207.6,216.9 267.4,198.7 259.7,194.1 C252,189.5 167.3,191.4 148.9,190.9"/><path class="tangle t2" d="M88,199.8 C99,206.9 149.8,253.1 153.6,242 C157.4,230.9 94.1,127.4 110.6,133.4 C127,139.4 228.4,258.5 252.5,278.1 C276.5,297.7 273.4,251.8 254.8,250.8 C236.2,249.8 144.4,275.6 140.7,272.3 C137.1,269 241.4,257 233.1,230.7 C224.8,204.5 92,131.3 90.9,114.6 C89.8,97.9 218.1,123.9 226.3,130.7 C234.6,137.4 134.9,158.1 140.4,154.9 C146,151.7 262.4,98.2 259.5,111.5 C256.6,124.9 149.3,236.2 123.1,234.9 C96.8,233.7 85.1,112.6 102.2,104.3 C119.3,96 200.2,175 225.5,185.2 C250.9,195.4 268.2,163.4 254.3,165.2 C240.5,167.1 139.9,177.5 142.5,196.4 C145,215.3 248.4,286.8 269.5,278.8 C290.7,270.7 299,165.7 269.3,148.3 C239.7,131 96.5,151.8 91.7,174.9 C86.9,197.9 220,276.8 240.7,286.5 C261.3,296.2 218.7,253.5 215.6,233 C212.6,212.5 232.1,172.9 222.4,163.5 C212.8,154.1 180.1,160.5 157.7,176.7 C135.3,192.9 94.2,263.6 88.2,260.6 C82.1,257.7 104.1,183.1 121.4,159.2 C138.6,135.3 180,124.1 191.7,117.1"/><path class="tangle t3" d="M88.1,127.2 C93.7,133.3 120.7,140.1 121.4,163.9 C122.1,187.8 78.7,272 92.2,270.5 C105.8,269.1 193.9,151.8 202.5,155.4 C211.2,159.1 147.1,268.8 144.3,292.4 C141.4,316 164.6,307.1 185.5,297 C206.3,286.9 281.8,238.6 269.1,231.8 C256.4,225 118.8,258.5 109.4,256.2 C100.1,254 200.4,239.1 212.8,218.2 C225.3,197.3 200.6,121.4 184.2,130.8 C167.9,140.2 120.2,258.5 114.9,274.8 C109.7,291 152.4,238.2 152.6,228.1 C152.9,218.1 124.8,223.9 116.5,214.4 C108.2,204.9 106.7,157.3 103,170.9 C99.2,184.6 93.5,285.3 93.9,296.4 C94.3,307.4 100,248.1 105.4,237.1 C110.9,226.1 108.5,243.9 126.4,230.3 C144.3,216.8 198.4,168.1 212.8,155.7"/><text x="82" y="304" class="t-void">generated code</text></svg>
+      </figure>
+      <div class="vs" aria-hidden="true"><svg viewBox="0 0 44 14"><line x1="0" y1="7" x2="37" y2="7" stroke="currentColor" stroke-width="1.5"/><polygon points="44,7 35,2 35,12" fill="currentColor"/></svg><span>Same job</span></div>
+      <figure class="plate side rd" id="flow-fig">
+        <div class="side-head">
+          <div><p class="tag">AI-built on Watershed</p><p class="note">Every block labelled. Every block editable.</p></div>
+          <div class="tools">
+            <div class="tools-row">
+              <div class="seg" role="group" aria-label="Pipeline actions">
+                <button type="button" id="btn-debug" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="4"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3"/></svg>Debug</button>
+                <button type="button" id="btn-deploy" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 11V2M4 6l4-4 4 4M2.5 14h11"/></svg>Deploy</button>
+                <button type="button" id="btn-scale" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="5.5" width="9" height="9"/><path d="M4.5 5.5v-3h9v9h-3"/></svg>Scale</button>
+              </div>
+              <span class="status" id="flow-status">Draft</span>
+            </div>
+            <p class="oneclick"><span class="nw">One click each.</span> <span class="nw">No special knowledge needed.</span></p>
+          </div>
+        </div>
+        <svg class="dg flow-svg flow-h" viewBox="0 0 800 380" role="group" aria-label="The same kind of pipeline as labelled blocks. Four triggers: REST API, Kafka, CDC and Event. They feed a Transform block, then an AI node linked to a knowledge base. Three outputs: Store, Publish event and API response. Each block is a button that explains it; trigger buttons highlight their path."><text x="20" y="30" class="t-hd">TRIGGERS</text><text x="250" y="30" class="t-hd">TRANSFORM</text><text x="450" y="30" class="t-hd">AI IN THE FLOW</text><text x="644" y="30" class="t-hd">OUTPUTS</text><path class="edge" data-r="rest" d="M170,96 C210,96 210,198 250,198"/><path class="edge" data-r="kafka" d="M170,164 C210,164 210,198 250,198"/><path class="edge" data-r="cdc" d="M170,232 C210,232 210,198 250,198"/><path class="edge" data-r="event" d="M170,300 C210,300 210,198 250,198"/><path class="edge" data-r="rest kafka cdc event" d="M390,198 L450,198"/><path class="edge" data-r="kafka cdc event" d="M590,198 C617,198 617,118 644,118"/><path class="edge" data-r="kafka event" d="M590,198 C617,198 617,198 644,198"/><path class="edge" data-r="rest" d="M590,198 C617,198 617,278 644,278"/><path class="edge kb-e" data-r="rest" d="M520,242 L520,288"/><g class="blk trig" tabindex="0" role="button" data-k="rest" data-r="rest" data-tip="REST API · Starts on an HTTP request." aria-pressed="false" aria-label="REST API trigger. Show its path."><rect class="fring" x="15" y="69" width="160" height="54" rx="5"/><rect class="blk-r" x="20" y="74" width="150" height="44" rx="3"/><rect class="mk" x="32" y="92.5" width="7" height="7"/><text x="47" y="100.3" class="t-blk">REST API</text></g><circle class="port" data-r="rest" cx="170" cy="96" r="4"/><g class="blk trig" tabindex="0" role="button" data-k="kafka" data-r="kafka" data-tip="KAFKA · Consumes messages from a topic." aria-pressed="false" aria-label="KAFKA trigger. Show its path."><rect class="fring" x="15" y="137" width="160" height="54" rx="5"/><rect class="blk-r" x="20" y="142" width="150" height="44" rx="3"/><rect class="mk" x="32" y="160.5" width="7" height="7"/><text x="47" y="168.3" class="t-blk">KAFKA</text></g><circle class="port" data-r="kafka" cx="170" cy="164" r="4"/><g class="blk trig" tabindex="0" role="button" data-k="cdc" data-r="cdc" data-tip="CDC · Fires when rows change in a database." aria-pressed="false" aria-label="CDC trigger. Show its path."><rect class="fring" x="15" y="205" width="160" height="54" rx="5"/><rect class="blk-r" x="20" y="210" width="150" height="44" rx="3"/><rect class="mk" x="32" y="228.5" width="7" height="7"/><text x="47" y="236.3" class="t-blk">CDC</text></g><circle class="port" data-r="cdc" cx="170" cy="232" r="4"/><g class="blk trig" tabindex="0" role="button" data-k="event" data-r="event" data-tip="EVENT · Starts when an event arrives." aria-pressed="false" aria-label="EVENT trigger. Show its path."><rect class="fring" x="15" y="273" width="160" height="54" rx="5"/><rect class="blk-r" x="20" y="278" width="150" height="44" rx="3"/><rect class="mk" x="32" y="296.5" width="7" height="7"/><text x="47" y="304.3" class="t-blk">EVENT</text></g><circle class="port" data-r="event" cx="170" cy="300" r="4"/><g class="rep" data-r="rest kafka cdc event"><rect x="264" y="152" width="140" height="64" rx="3"/><rect x="257" y="159" width="140" height="64" rx="3"/></g><g class="blk tr" tabindex="0" role="button" data-k="tr" data-r="rest kafka cdc event" data-tip="TRANSFORM · Reshapes the data. Open it and change any field." aria-label="transform. Reshapes the data. Open it and change any field."><rect class="fring" x="245" y="161" width="150" height="74" rx="5"/><rect class="blk-r" x="250" y="166" width="140" height="64" rx="3"/><text x="264" y="196" class="t-blk">TRANSFORM</text><text x="264" y="212" class="t-sub">reshape the data</text></g><g class="edit" aria-hidden="true"><rect x="342" y="150" width="48" height="15" rx="2"/><text x="362" y="161" class="t-tab" text-anchor="middle">EDIT</text><path class="cursor" d="M382,160 l0,15 l4,-4 l3,6 l3,-1.5 l-3,-6 l5.5,0 Z"/><rect class="you" x="392" y="176" width="30" height="14" rx="2"/><text x="407" y="186.2" class="t-you" text-anchor="middle">YOU</text></g><circle class="port" data-r="rest kafka cdc event" cx="250" cy="198" r="4"/><circle class="port" data-r="rest kafka cdc event" cx="390" cy="198" r="4"/><g class="rep" data-r="rest kafka cdc event"><rect x="464" y="140" width="140" height="88" rx="3"/><rect x="457" y="147" width="140" height="88" rx="3"/></g><g class="blk ai" tabindex="0" role="button" data-k="ai" data-r="rest kafka cdc event" data-tip="AI NODE · AI works inside the flow while the data is transformed." aria-label="ai node. AI works inside the flow while the data is transformed."><rect class="fring" x="445" y="149" width="150" height="98" rx="5"/><rect class="ai-r" x="450" y="154" width="140" height="88" rx="3"/><text x="466" y="202" class="t-ai">AI</text><text x="466" y="220" class="t-ais">enrich · answer</text><g class="ai-glyph"><line x1="556" y1="170" x2="572" y2="180"/><line x1="556" y1="190" x2="572" y2="180"/><line x1="556" y1="170" x2="556" y2="190"/><circle cx="556" cy="170" r="3.4"/><circle cx="556" cy="190" r="3.4"/><circle cx="572" cy="180" r="3.4"/></g></g><circle class="port" data-r="rest kafka cdc event" cx="450" cy="198" r="4"/><circle class="port" data-r="rest kafka cdc event" cx="590" cy="198" r="4"/><g class="blk kb" tabindex="0" role="button" data-k="kb" data-r="rest" data-tip="KNOWLEDGE BASE · AI answers API requests from what is stored here." aria-label="knowledge base. AI answers API requests from what is stored here."><rect class="fring" x="479" y="283" width="82" height="56" rx="5"/><path class="kb-r" d="M484,298 L484,324 A36,10 0 0 0 556,324 L556,298 Z"/><ellipse class="kb-r" cx="520" cy="298" rx="36" ry="10"/><text x="520" y="356" class="t-hd" text-anchor="middle">KNOWLEDGE BASE</text></g><g class="blk out" tabindex="0" role="button" data-k="store" data-r="kafka cdc event" data-tip="STORE · Writes the result to another place." aria-label="store. Writes the result to another place."><rect class="fring" x="639" y="91" width="158" height="54" rx="5"/><rect class="blk-r" x="644" y="96" width="148" height="44" rx="3"/><rect class="mk" x="656" y="114.5" width="7" height="7"/><text x="671" y="122.3" class="t-blk">STORE</text></g><circle class="port" data-r="kafka cdc event" cx="644" cy="118" r="4"/><g class="blk out" tabindex="0" role="button" data-k="pub" data-r="kafka event" data-tip="PUBLISH EVENT · Sends an event for other systems." aria-label="publish event. Sends an event for other systems."><rect class="fring" x="639" y="171" width="158" height="54" rx="5"/><rect class="blk-r" x="644" y="176" width="148" height="44" rx="3"/><rect class="mk" x="656" y="194.5" width="7" height="7"/><text x="671" y="202.3" class="t-blk">PUBLISH EVENT</text></g><circle class="port" data-r="kafka event" cx="644" cy="198" r="4"/><g class="blk out" tabindex="0" role="button" data-k="resp" data-r="rest" data-tip="API RESPONSE · Replies to the caller." aria-label="api response. Replies to the caller."><rect class="fring" x="639" y="251" width="158" height="54" rx="5"/><rect class="blk-r" x="644" y="256" width="148" height="44" rx="3"/><rect class="mk" x="656" y="274.5" width="7" height="7"/><text x="671" y="282.3" class="t-blk">API RESPONSE</text></g><circle class="port" data-r="rest" cx="644" cy="278" r="4"/><g class="probe"><circle cx="210" cy="147" r="7"/><circle class="pc" cx="210" cy="147" r="2.2"/></g><g class="probe"><circle cx="210" cy="181" r="7"/><circle class="pc" cx="210" cy="181" r="2.2"/></g><g class="probe"><circle cx="210" cy="215" r="7"/><circle class="pc" cx="210" cy="215" r="2.2"/></g><g class="probe"><circle cx="210" cy="249" r="7"/><circle class="pc" cx="210" cy="249" r="2.2"/></g><g class="probe"><circle cx="420" cy="198" r="7"/><circle class="pc" cx="420" cy="198" r="2.2"/></g><g class="probe"><circle cx="617" cy="158" r="7"/><circle class="pc" cx="617" cy="158" r="2.2"/></g><g class="probe"><circle cx="617" cy="198" r="7"/><circle class="pc" cx="617" cy="198" r="2.2"/></g><g class="probe"><circle cx="617" cy="238" r="7"/><circle class="pc" cx="617" cy="238" r="2.2"/></g></svg>
+        <svg class="dg flow-svg flow-v" viewBox="0 0 390 460" role="group" aria-label="The same kind of pipeline as labelled blocks. Four triggers: REST API, Kafka, CDC and Event. They feed a Transform block, then an AI node linked to a knowledge base. Three outputs: Store, Publish event and API response. Each block is a button that explains it; trigger buttons highlight their path."><text x="11" y="22" class="t-hd">TRIGGERS</text><path class="edge" data-r="rest" d="M54,74 C54,104 195,100 195,128"/><path class="edge" data-r="kafka" d="M148,74 C148,104 195,100 195,128"/><path class="edge" data-r="cdc" d="M242,74 C242,104 195,100 195,128"/><path class="edge" data-r="event" d="M336,74 C336,104 195,100 195,128"/><path class="edge" data-r="rest kafka cdc event" d="M195,180 L195,224"/><path class="edge" data-r="kafka cdc event" d="M195,300 C195,340 69,344 69,384"/><path class="edge" data-r="kafka event" d="M195,300 C195,340 195,344 195,384"/><path class="edge" data-r="rest" d="M195,300 C195,340 321,344 321,384"/><path class="edge kb-e" data-r="rest" d="M285,262 L310,262"/><g class="blk trig" tabindex="0" role="button" data-k="rest" data-r="rest" data-tip="REST API · Starts on an HTTP request." aria-pressed="false" aria-label="REST API trigger. Show its path."><rect class="fring" x="6" y="29" width="96" height="50" rx="5"/><rect class="blk-r" x="11" y="34" width="86" height="40" rx="3"/><text x="54" y="57.8" class="t-blk" text-anchor="middle">REST API</text></g><circle class="port" data-r="rest" cx="54" cy="74" r="4"/><g class="blk trig" tabindex="0" role="button" data-k="kafka" data-r="kafka" data-tip="KAFKA · Consumes messages from a topic." aria-pressed="false" aria-label="KAFKA trigger. Show its path."><rect class="fring" x="100" y="29" width="96" height="50" rx="5"/><rect class="blk-r" x="105" y="34" width="86" height="40" rx="3"/><text x="148" y="57.8" class="t-blk" text-anchor="middle">KAFKA</text></g><circle class="port" data-r="kafka" cx="148" cy="74" r="4"/><g class="blk trig" tabindex="0" role="button" data-k="cdc" data-r="cdc" data-tip="CDC · Fires when rows change in a database." aria-pressed="false" aria-label="CDC trigger. Show its path."><rect class="fring" x="194" y="29" width="96" height="50" rx="5"/><rect class="blk-r" x="199" y="34" width="86" height="40" rx="3"/><text x="242" y="57.8" class="t-blk" text-anchor="middle">CDC</text></g><circle class="port" data-r="cdc" cx="242" cy="74" r="4"/><g class="blk trig" tabindex="0" role="button" data-k="event" data-r="event" data-tip="EVENT · Starts when an event arrives." aria-pressed="false" aria-label="EVENT trigger. Show its path."><rect class="fring" x="288" y="29" width="96" height="50" rx="5"/><rect class="blk-r" x="293" y="34" width="86" height="40" rx="3"/><text x="336" y="57.8" class="t-blk" text-anchor="middle">EVENT</text></g><circle class="port" data-r="event" cx="336" cy="74" r="4"/><g class="rep" data-r="rest kafka cdc event"><rect x="119" y="114" width="180" height="52" rx="3"/><rect x="112" y="121" width="180" height="52" rx="3"/></g><g class="blk tr" tabindex="0" role="button" data-k="tr" data-r="rest kafka cdc event" data-tip="TRANSFORM · Reshapes the data. Open it and change any field." aria-label="transform. Reshapes the data. Open it and change any field."><rect class="fring" x="100" y="123" width="190" height="62" rx="5"/><rect class="blk-r" x="105" y="128" width="180" height="52" rx="3"/><text x="119" y="152" class="t-blk">TRANSFORM</text><text x="119" y="168" class="t-sub">reshape the data</text></g><g class="edit" aria-hidden="true"><rect x="291" y="146" width="46" height="15" rx="2"/><text x="309" y="157" class="t-tab" text-anchor="middle">EDIT</text><path class="cursor" d="M329,156 l0,15 l4,-4 l3,6 l3,-1.5 l-3,-6 l5.5,0 Z"/><rect class="you" x="339" y="172" width="30" height="14" rx="2"/><text x="354" y="182.2" class="t-you" text-anchor="middle">YOU</text></g><circle class="port" data-r="rest kafka cdc event" cx="195" cy="128" r="4"/><circle class="port" data-r="rest kafka cdc event" cx="195" cy="180" r="4"/><g class="rep" data-r="rest kafka cdc event"><rect x="119" y="210" width="180" height="76" rx="3"/><rect x="112" y="217" width="180" height="76" rx="3"/></g><g class="blk ai" tabindex="0" role="button" data-k="ai" data-r="rest kafka cdc event" data-tip="AI NODE · AI works inside the flow while the data is transformed." aria-label="ai node. AI works inside the flow while the data is transformed."><rect class="fring" x="100" y="219" width="190" height="86" rx="5"/><rect class="ai-r" x="105" y="224" width="180" height="76" rx="3"/><text x="121" y="266" class="t-ai">AI</text><text x="121" y="284" class="t-ais">enrich · answer</text><g class="ai-glyph"><line x1="251" y1="240" x2="267" y2="250"/><line x1="251" y1="260" x2="267" y2="250"/><line x1="251" y1="240" x2="251" y2="260"/><circle cx="251" cy="240" r="3.4"/><circle cx="251" cy="260" r="3.4"/><circle cx="267" cy="250" r="3.4"/></g></g><circle class="port" data-r="rest kafka cdc event" cx="195" cy="224" r="4"/><circle class="port" data-r="rest kafka cdc event" cx="195" cy="300" r="4"/><g class="blk kb" tabindex="0" role="button" data-k="kb" data-r="rest" data-tip="KNOWLEDGE BASE · AI answers API requests from what is stored here." aria-label="knowledge base. AI answers API requests from what is stored here."><rect class="fring" x="305" y="239" width="66" height="48" rx="5"/><path class="kb-r" d="M310,252 L310,274 A28,8 0 0 0 366,274 L366,252 Z"/><ellipse class="kb-r" cx="338" cy="252" rx="28" ry="8"/><text x="338" y="300" class="t-hd" text-anchor="middle">KNOWLEDGE</text><text x="338" y="313" class="t-hd" text-anchor="middle">BASE</text></g><g class="blk out" tabindex="0" role="button" data-k="store" data-r="kafka cdc event" data-tip="STORE · Writes the result to another place." aria-label="store. Writes the result to another place."><rect class="fring" x="6" y="379" width="126" height="52" rx="5"/><rect class="blk-r" x="11" y="384" width="116" height="42" rx="3"/><text x="69" y="408.8" class="t-blk" text-anchor="middle">STORE</text></g><circle class="port" data-r="kafka cdc event" cx="69" cy="384" r="4"/><g class="blk out" tabindex="0" role="button" data-k="pub" data-r="kafka event" data-tip="PUBLISH EVENT · Sends an event for other systems." aria-label="publish event. Sends an event for other systems."><rect class="fring" x="132" y="379" width="126" height="52" rx="5"/><rect class="blk-r" x="137" y="384" width="116" height="42" rx="3"/><text x="195" y="408.8" class="t-blk" text-anchor="middle">PUBLISH EVENT</text></g><circle class="port" data-r="kafka event" cx="195" cy="384" r="4"/><g class="blk out" tabindex="0" role="button" data-k="resp" data-r="rest" data-tip="API RESPONSE · Replies to the caller." aria-label="api response. Replies to the caller."><rect class="fring" x="258" y="379" width="126" height="52" rx="5"/><rect class="blk-r" x="263" y="384" width="116" height="42" rx="3"/><text x="321" y="408.8" class="t-blk" text-anchor="middle">API RESPONSE</text></g><circle class="port" data-r="rest" cx="321" cy="384" r="4"/><text x="11" y="448" class="t-hd">OUTPUTS</text><g class="probe"><circle cx="124.5" cy="101.8" r="7"/><circle class="pc" cx="124.5" cy="101.8" r="2.2"/></g><g class="probe"><circle cx="171.5" cy="101.8" r="7"/><circle class="pc" cx="171.5" cy="101.8" r="2.2"/></g><g class="probe"><circle cx="218.5" cy="101.8" r="7"/><circle class="pc" cx="218.5" cy="101.8" r="2.2"/></g><g class="probe"><circle cx="265.5" cy="101.8" r="7"/><circle class="pc" cx="265.5" cy="101.8" r="2.2"/></g><g class="probe"><circle cx="195" cy="202" r="7"/><circle class="pc" cx="195" cy="202" r="2.2"/></g><g class="probe"><circle cx="132" cy="342" r="7"/><circle class="pc" cx="132" cy="342" r="2.2"/></g><g class="probe"><circle cx="195" cy="342" r="7"/><circle class="pc" cx="195" cy="342" r="2.2"/></g><g class="probe"><circle cx="258" cy="342" r="7"/><circle class="pc" cx="258" cy="342" r="2.2"/></g></svg>
+        <p class="readout" id="flow-readout" aria-live="polite"><span class="ro-k">Try it</span><span class="ro-v"> Pick a trigger to trace its path.</span></p>
+      </figure>
+    </div>
+    <ol class="steps" aria-label="How a pipeline gets made">
+      <li><span class="who">AI</span>builds the flow from blocks</li>
+      <li><span class="who">You</span>open any block and change it</li>
+      <li><span class="who">You</span>deploy with one click</li>
+    </ol>
+  </section>
+
+  <section class="sec" id="work" aria-labelledby="work-h">
+    <div class="sec-head">
+      <p class="kicker">Earlier work</p>
+      <h2 id="work-h"><span class="raw inl">Also</span> <span class="res inl">shipped.</span></h2>
+    </div>
+    <ul class="work">
+      <li>
+        <div class="plate gl">
+          <svg class="spot" viewBox="0 0 320 240" role="img" aria-label="A phone showing a live dog walk on a map with a timer, beside a shared photo and a paid invoice">
+            <rect x="18" y="62" width="86" height="74" rx="6" class="fs si" stroke-width="1.2"/>
+            <rect x="26" y="70" width="70" height="46" rx="3" class="fs2"/>
+            <path d="M26 116 L48 92 L60 104 L72 94 L96 116 Z" class="fph"/>
+            <circle cx="84" cy="82" r="6" class="fm"/>
+            <rect x="26" y="123" width="40" height="5" rx="2" class="fph"/>
+            <rect x="104" y="24" width="112" height="240" rx="18" class="fs si" stroke-width="1.5"/>
+            <line x1="146" y1="33" x2="174" y2="33" class="si" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="118" y="56" class="sm fmu" font-size="8">WALK IN PROGRESS</text>
+            <text x="118" y="79" class="disp fi" font-size="21" font-weight="800">24:10</text>
+            <rect x="116" y="88" width="88" height="86" rx="6" class="fs2"/>
+            <path d="M116 122 H204 M152 88 V174 M116 152 L204 112" fill="none" class="ss" stroke-width="4"/>
+            <path d="M126 164 C 138 150, 132 134, 150 128 S 178 118, 186 104" fill="none" class="si" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="126" cy="164" r="3.5" class="fi"/>
+            <circle cx="186" cy="104" r="10" class="fm" opacity=".55"/><circle cx="186" cy="104" r="5" class="fm si" stroke-width="1.5"/>
+            <rect x="116" y="184" width="70" height="5" rx="2" class="fph"/><rect x="116" y="194" width="52" height="5" rx="2" class="fph"/>
+            <rect x="116" y="208" width="88" height="22" rx="6" class="fi"/>
+            <text x="160" y="223" text-anchor="middle" class="disp fp" font-size="9.5" font-weight="700">End walk</text>
+            <rect x="206" y="132" width="98" height="58" rx="6" class="fs si" stroke-width="1.2"/>
+            <text x="216" y="150" class="sm fmu" font-size="8">INVOICE</text>
+            <text x="216" y="172" class="disp fi" font-size="15" font-weight="800">Paid</text>
+            <circle cx="286" cy="166" r="9" class="fm"/><path d="M281.5 166 l3 3 l5.5 -6" fill="none" class="si" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="216" y="180" width="50" height="4" rx="2" class="fph"/>
+          </svg>
+        </div>
+        <h3>Pet care platform</h3>
+        <p>Scheduling, live walk tracking and Stripe payments. Native iOS.</p>
+        <span class="yr">TIGMAMINDS · 2018 TO NOW</span>
+      </li>
+      <li>
+        <div class="plate gl">
+          <svg class="spot" viewBox="0 0 320 240" role="img" aria-label="A laptop and a phone on a video consultation with a doctor, with a chat bubble">
+            <rect x="30" y="30" width="224" height="150" rx="10" class="fs si" stroke-width="1.5"/>
+            <rect x="38" y="38" width="208" height="134" rx="5" class="fv"/>
+            <circle cx="142" cy="92" r="21" class="fvf"/>
+            <path d="M100 172 C 102 134, 182 134, 184 172 Z" class="fvf"/>
+            <rect x="196" y="46" width="42" height="32" rx="4" class="fvf"/>
+            <circle cx="217" cy="58" r="6" class="fv"/><path d="M205 78 C 206 68, 228 68, 229 78 Z" class="fv"/>
+            <circle cx="118" cy="154" r="8" class="fs"/><circle cx="142" cy="154" r="8" class="fs"/><circle cx="166" cy="154" r="8" class="fm"/>
+            <rect x="116" y="149" width="4" height="8" rx="2" class="fi"/>
+            <rect x="138" y="151.5" width="6" height="5" rx="1" class="fi"/><path d="M144 154 l3 -2 v4 z" class="fi"/>
+            <path d="M162 154 h8" class="si" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 180 H268 L256 194 H28 Z" class="fs2 si" stroke-width="1.2" stroke-linejoin="round"/>
+            <rect x="238" y="98" width="66" height="128" rx="12" class="fs si" stroke-width="1.5"/>
+            <rect x="245" y="108" width="52" height="92" rx="5" class="fv"/>
+            <circle cx="271" cy="142" r="11" class="fvf"/><path d="M251 200 C 252 172, 290 172, 291 200 Z" class="fvf"/>
+            <circle cx="271" cy="213" r="6" class="fm"/>
+            <path d="M18 52 H88 a8 8 0 0 1 8 8 V76 a8 8 0 0 1 -8 8 H36 l-11 9 V84 H18 a8 8 0 0 1 -8 -8 V60 a8 8 0 0 1 8 -8 Z" class="fs si" stroke-width="1.2"/>
+            <rect x="20" y="62" width="58" height="5" rx="2" class="fph"/><rect x="20" y="72" width="40" height="5" rx="2" class="fph"/>
+          </svg>
+        </div>
+        <h3>Doctor teleconsulting</h3>
+        <p>Video calls and chat on iOS, Android and web.</p>
+        <span class="yr">TEUPO · 2024 TO NOW</span>
+      </li>
+      <li>
+        <div class="plate gl">
+          <svg class="spot" viewBox="0 0 320 240" role="img" aria-label="A GST tax invoice with a barcode, in front of a stock list with one item running low">
+            <rect x="22" y="70" width="104" height="114" rx="6" class="fs si" stroke-width="1.2"/>
+            <text x="32" y="89" class="sm fmu" font-size="8">STOCK</text>
+            <rect x="32" y="100" width="22" height="5" rx="2" class="fph"/><rect x="60" y="99" width="54" height="7" class="fi"/>
+            <rect x="32" y="116" width="22" height="5" rx="2" class="fph"/><rect x="60" y="115" width="40" height="7" class="fi"/>
+            <rect x="32" y="132" width="22" height="5" rx="2" class="fph"/><rect x="60" y="131" width="12" height="7" class="fm si" stroke-width="1"/>
+            <rect x="32" y="148" width="22" height="5" rx="2" class="fph"/><rect x="60" y="147" width="46" height="7" class="fi"/>
+            <rect x="32" y="164" width="22" height="5" rx="2" class="fph"/><rect x="60" y="163" width="30" height="7" class="fi"/>
+            <path d="M136 22 H268 V206 l-11 8 -11 -8 -11 8 -11 -8 -11 8 -11 -8 -11 8 -11 -8 -11 8 -11 -8 -11 8 -11 -8 V22 Z" class="fs si" stroke-width="1.2" stroke-linejoin="round"/>
+            <text x="148" y="44" class="disp fi" font-size="11" font-weight="800">TAX INVOICE</text>
+            <line x1="148" y1="54" x2="256" y2="54" class="smu" stroke-dasharray="2 3"/>
+            <rect x="148" y="66" width="54" height="5" rx="2" class="fph"/><rect x="228" y="66" width="28" height="5" rx="2" class="fph"/>
+            <rect x="148" y="82" width="40" height="5" rx="2" class="fph"/><rect x="228" y="82" width="28" height="5" rx="2" class="fph"/>
+            <rect x="148" y="98" width="62" height="5" rx="2" class="fph"/><rect x="228" y="98" width="28" height="5" rx="2" class="fph"/>
+            <rect x="148" y="114" width="46" height="5" rx="2" class="fph"/><rect x="228" y="114" width="28" height="5" rx="2" class="fph"/>
+            <line x1="148" y1="130" x2="256" y2="130" class="smu" stroke-dasharray="2 3"/>
+            <text x="148" y="148" class="sm fmu" font-size="8.5">GST</text><rect x="228" y="143" width="28" height="5" rx="2" class="fph"/>
+            <text x="148" y="170" class="disp fi" font-size="11" font-weight="800">Total</text><rect x="214" y="162" width="42" height="9" rx="2" class="fm"/>
+            <g class="fi"><rect x="150" y="182" width="1.5" height="16"/><rect x="153" y="182" width="2.5" height="16"/><rect x="157.5" y="182" width="1" height="16"/><rect x="160" y="182" width="3" height="16"/><rect x="165" y="182" width="1.2" height="16"/><rect x="168" y="182" width="1" height="16"/><rect x="171" y="182" width="2.5" height="16"/><rect x="175" y="182" width="3" height="16"/><rect x="180" y="182" width="1.2" height="16"/><rect x="183" y="182" width="2" height="16"/><rect x="187" y="182" width="1" height="16"/><rect x="190" y="182" width="1.4" height="16"/><rect x="193" y="182" width="3" height="16"/><rect x="198" y="182" width="1" height="16"/><rect x="201" y="182" width="2.2" height="16"/><rect x="205" y="182" width="1" height="16"/><rect x="208" y="182" width="3" height="16"/><rect x="213" y="182" width="1.2" height="16"/><rect x="216" y="182" width="2" height="16"/><rect x="220" y="182" width="1" height="16"/><rect x="223" y="182" width="1.4" height="16"/><rect x="226" y="182" width="3" height="16"/><rect x="231" y="182" width="1" height="16"/><rect x="234" y="182" width="2.2" height="16"/><rect x="238" y="182" width="1" height="16"/><rect x="241" y="182" width="3" height="16"/><rect x="246" y="182" width="1.2" height="16"/><rect x="249" y="182" width="2" height="16"/><rect x="253" y="182" width="1.2" height="16"/></g>
+          </svg>
+        </div>
+        <h3>Pharmacy billing</h3>
+        <p>Inventory and GST-compliant billing on AWS.</p>
+        <span class="yr">TIGMAMINDS · 2017 TO 2018</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sec" id="contact" aria-labelledby="contact-h">
+    <div class="sec-head">
+      <p class="kicker">Contact</p>
+      <h2 id="contact-h"><span class="raw">Have an idea?</span> <span class="res"><span class="hl">Send it over.</span></span></h2>
+    </div>
+    <div class="tblock" role="group" aria-label="Contact details">
+      <div class="tb tb-name"><span class="tb-k">Drawn by</span><span class="tb-v">Jay Unewal</span></div>
+      <div class="tb tb-mail"><span class="tb-k">Email</span><div class="mailrow"><span id="email">jayunewal@outlook.com</span><button type="button" id="copy-email">Copy</button></div><p class="copy-status" id="copy-status" role="status"></p></div>
+      <div class="tb tb-loc"><span class="tb-k">Based in</span><span class="tb-v">India · Vancouver, BC</span></div>
+      <div class="tb tb-in"><span class="tb-k">LinkedIn</span><a href="https://www.linkedin.com/in/jayunewal" target="_blank" rel="noopener">/in/jayunewal ↗</a></div>
+      <div class="tb tb-sheet"><span class="tb-k">Sheet 2 of 2</span><a href="resume.html">Full resume →</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot mono">
+  <span>© 2026 Jay Unewal · Sheet 1 of 2</span>
+  <a href="#top">Back to top ↑</a>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* revisions: the table rows are radio buttons; the drawing follows */
+  var revFig = document.getElementById('rev-fig');
+  var revStatus = document.getElementById('rev-status');
+  var radios = Array.prototype.slice.call(document.querySelectorAll('input[name="rev"]'));
+  var ORDER = ['a', 'b', 'c', 'd', 'e'];
+  var NAMES = { a: 'Sketch', b: 'Shaped', c: 'Built', d: 'Tuned', e: 'Running' };
+  var timer = null, played = false;
+  function setRev(v) {
+    var idx = ORDER.indexOf(v);
+    revFig.setAttribute('data-rev', v);
+    radios.forEach(function (r) {
+      r.checked = r.value === v;
+      r.parentNode.classList.toggle('future', ORDER.indexOf(r.value) > idx);
+    });
+    revStatus.textContent = 'Rev ' + v.toUpperCase() + ' · ' + NAMES[v];
+  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  radios.forEach(function (r) {
+    r.addEventListener('change', function () { played = true; stop(); setRev(r.value); });
+  });
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || played) return;
+        played = true; io.disconnect();
+        var i = 0; setRev(ORDER[0]);
+        timer = setInterval(function () { i++; if (i >= ORDER.length) { stop(); return; } setRev(ORDER[i]); }, 1100);
+      });
+    }, { threshold: 0.6 });
+    io.observe(revFig);
+  }
+
+  /* platform flow */
+  var fig = document.getElementById('flow-fig');
+  var ro = document.getElementById('flow-readout');
+  var statusEl = document.getElementById('flow-status');
+  var defaultRO = ro.innerHTML;
+  var last = null, route = null;
+  var ROUTES = {
+    rest: ['REST API', 'A request comes in. AI answers from the knowledge base and replies to the caller.'],
+    kafka: ['Kafka', 'Each message is transformed, enriched by AI, stored, and published as an event.'],
+    cdc: ['CDC', 'A row changes in a database. The change is transformed and stored in another place.'],
+    event: ['Event', 'An event starts the flow. The result is stored and a new event goes out.']
+  };
+  function show(k, v) {
+    ro.textContent = '';
+    var a = document.createElement('span'); a.className = 'ro-k'; a.textContent = k;
+    var b = document.createElement('span'); b.className = 'ro-v'; b.textContent = ' ' + v;
+    ro.appendChild(a); ro.appendChild(b);
+  }
+  function restore() { if (last) show(last[0], last[1]); else ro.innerHTML = defaultRO; }
+  var routed = fig.querySelectorAll('.dg [data-r]');
+  function applyRoute() {
+    Array.prototype.forEach.call(routed, function (el) {
+      var member = (' ' + el.getAttribute('data-r') + ' ').indexOf(' ' + route + ' ') > -1;
+      el.classList.toggle('faded', !!route && !member);
+      el.classList.toggle('hot', !!route && member);
+    });
+    Array.prototype.forEach.call(fig.querySelectorAll('.trig'), function (t) {
+      t.setAttribute('aria-pressed', String(t.getAttribute('data-k') === route));
+    });
+  }
+  Array.prototype.forEach.call(fig.querySelectorAll('.blk'), function (el) {
+    var parts = el.getAttribute('data-tip').split(' · ');
+    var key = el.getAttribute('data-k');
+    function on() { el.classList.add('on'); show(parts[0], parts[1]); }
+    function off() { el.classList.remove('on'); restore(); }
+    function act() {
+      if (ROUTES[key]) {
+        route = route === key ? null : key;
+        applyRoute();
+        last = route ? ROUTES[key] : null;
+        if (last) show(last[0], last[1]); else show(parts[0], parts[1]);
+      } else { last = parts; show(parts[0], parts[1]); }
+    }
+    el.addEventListener('mouseenter', on); el.addEventListener('mouseleave', off);
+    el.addEventListener('focus', on); el.addEventListener('blur', off);
+    el.addEventListener('click', act);
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
+  });
+  var acts = {
+    'btn-debug': ['debug', ['Debug on', 'A probe sits on every link. One click.'], ['Debug off', 'Probes removed.']],
+    'btn-deploy': ['live-on', ['Deployed', 'Live in one click. No setup.'], ['Stopped', 'Back to draft.']],
+    'btn-scale': ['scaled', ['Scaled out', 'Busy blocks run extra copies.'], ['Scaled in', 'One copy of each block.']]
+  };
+  Object.keys(acts).forEach(function (id) {
+    var btn = document.getElementById(id), cfg = acts[id];
+    btn.addEventListener('click', function () {
+      var onNow = btn.getAttribute('aria-pressed') !== 'true';
+      btn.setAttribute('aria-pressed', String(onNow));
+      fig.classList.toggle(cfg[0], onNow);
+      if (id === 'btn-deploy') statusEl.textContent = onNow ? 'Live' : 'Draft';
+      last = onNow ? cfg[1] : cfg[2];
+      show(last[0], last[1]);
+    });
+  });
+
+  /* copy email */
+  var copyBtn = document.getElementById('copy-email');
+  var emailEl = document.getElementById('email');
+  var copyStatus = document.getElementById('copy-status');
+  var t2 = null;
+  function say(msg) { copyStatus.textContent = msg; clearTimeout(t2); t2 = setTimeout(function () { copyStatus.textContent = ''; }, 3200); }
+  function selectEmail() {
+    var r = document.createRange(); r.selectNodeContents(emailEl);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function fallback() { selectEmail(); say('Selected. Press Ctrl+C or ⌘C to copy.'); }
+  copyBtn.addEventListener('click', function () {
+    var text = emailEl.textContent.trim();
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { say('Copied to your clipboard.'); }, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>

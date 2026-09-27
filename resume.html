@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jay Unewal Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
+<style>
+:root{
+  --paper:#F3F4EF; --sheet:#F9FAF6; --plate:#FFFFFF; --ink:#15171C; --pencil:#5B606B; --grid:#D3D5CC;
+  --mark:#FFD43B; --on-mark:#15171C;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --gut:clamp(16px,4vw,48px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--paper:#0D1A2B;--sheet:#11233A;--plate:#193050;--ink:#E7EDF5;--pencil:#9EB1C9;--grid:#28405F}
+}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0D1A2B;--sheet:#11233A;--plate:#193050;--ink:#E7EDF5;--pencil:#9EB1C9;--grid:#28405F}
+*,*::before,*::after{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--paper)}
+body{margin:0;padding-inline:var(--gut);background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.top,main,.foot{max-width:1120px;margin-inline:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+li{text-wrap:pretty}
+.mono{font-family:var(--mono);font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;font-size:11.5px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--mono);font-stretch:87.5%;font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.brand svg{width:22px;height:22px}
+.top nav a{font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding-block:4px;border-bottom:1.5px solid var(--ink)}
+.top nav a:hover{background:var(--mark);color:var(--on-mark)}
+.g-mk{fill:var(--mark);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.g-fl{fill:var(--plate);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.g-ink{fill:var(--ink);stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+
+.head{display:grid;gap:18px;padding-block:clamp(20px,4vw,52px) clamp(28px,4vw,44px)}
+.kicker{color:var(--pencil);display:flex;gap:10px;align-items:center}
+.kicker::before{content:"";flex:none;width:9px;height:9px;background:var(--ink)}
+.raw{display:block;font-stretch:125%;font-weight:300;color:var(--pencil);font-size:clamp(1.4rem,1.2vw + 1rem,2.2rem);line-height:1.1;letter-spacing:-.01em}
+.res{display:block;font-stretch:72%;font-weight:850;font-size:clamp(3.2rem,5vw + 1.2rem,6.2rem);line-height:.95;letter-spacing:-.01em;margin-top:.06em}
+.role{font-size:clamp(18px,.8vw + 13px,21px);font-weight:500}
+.nw{white-space:nowrap}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;list-style:none;margin:0;padding:0;color:var(--pencil)}
+.facts b{color:var(--ink);font-weight:600}
+.mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+#email{font-family:var(--mono);font-stretch:87.5%;font-size:15px;font-weight:600;user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+.inlink{font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding-block:4px;border-bottom:1.5px solid var(--ink)}
+.inlink:hover{background:var(--mark);color:var(--on-mark)}
+#copy-email{appearance:none;font-family:var(--mono);font-stretch:87.5%;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;background:var(--mark);color:var(--on-mark);border:1.5px solid var(--ink);border-radius:3px;cursor:pointer}
+#copy-email:hover{background:var(--ink);color:var(--paper)}
+.copy-status{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.06em;color:var(--pencil)}
+.summary{max-width:60ch;font-size:18px;line-height:1.55}
+
+.plate{--c:var(--ink);--l:14px;--w:1.5px;margin:0;padding:clamp(12px,2.4vw,28px);background:
+  linear-gradient(var(--c),var(--c)) 0 0/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 0 0/var(--w) var(--l),
+  linear-gradient(var(--c),var(--c)) 100% 0/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 100% 0/var(--w) var(--l),
+  linear-gradient(var(--c),var(--c)) 0 100%/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 0 100%/var(--w) var(--l),
+  linear-gradient(var(--c),var(--c)) 100% 100%/var(--l) var(--w),linear-gradient(var(--c),var(--c)) 100% 100%/var(--w) var(--l),
+  radial-gradient(circle at 1px 1px,var(--grid) 1.1px,transparent 1.5px) 0 0/22px 22px,var(--sheet);
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat}
+.tl{display:block;width:100%;height:auto}
+.tl-m{display:none}
+.tl text{font-family:var(--mono);font-stretch:87.5%;fill:var(--ink)}
+.tl .t-k{font-size:10.5px;letter-spacing:.14em;fill:var(--pencil)}
+.tl .t-b{font-size:11.5px;font-weight:600;letter-spacing:.03em}
+.tl .t-y{font-size:11px;fill:var(--pencil)}
+.tl-m .t-k{font-size:10px}
+.tl-m .t-b{font-size:10.5px}
+.tl-m .t-y{font-size:10px}
+.tl .bar{fill:var(--plate);stroke:var(--ink);stroke-width:1.3}
+.tl .bar.now{fill:var(--mark)}
+.tl .now-t{fill:var(--on-mark)}
+.tl .ax{stroke:var(--ink);stroke-width:1.2}
+.tl .tick{stroke:var(--ink);stroke-width:1}
+.tl .nowln{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 4}
+figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.legend{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:11px;height:11px;background:var(--mark);border:1px solid var(--ink)}
+@media (max-width:700px){.tl-d{display:none}.tl-m{display:block}}
+
+section{padding-block:clamp(48px,7vw,88px) 0}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(20px,3vw,32px);flex-wrap:wrap}
+h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem);line-height:1;letter-spacing:-.005em}
+.sh .mono{color:var(--pencil)}
+
+.job{display:grid;gap:14px 40px;padding-block:28px;border-top:1.5px solid var(--ink)}
+.job:last-child{border-bottom:1.5px solid var(--ink)}
+.meta{display:grid;gap:4px;align-content:start}
+.when{font-family:var(--mono);font-stretch:87.5%;font-size:12px;font-weight:650;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.when .cur{background:var(--mark);color:var(--on-mark);padding:1px 5px;margin-left:4px;font-size:10px;letter-spacing:.1em}
+.org{font-weight:650;font-size:17px;margin-top:6px}
+.sub{font-size:14px;color:var(--pencil)}
+.job h3{font-stretch:106%;font-weight:700;font-size:clamp(19px,1vw + 13px,23px);line-height:1.2;letter-spacing:-.01em;margin-bottom:12px}
+.job ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;max-width:70ch}
+.job li{position:relative;padding-left:20px}
+.job li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border:1.3px solid var(--ink)}
+.stack{margin-top:16px;font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;line-height:1.8;color:var(--pencil);max-width:78ch}
+.stack b{color:var(--ink);letter-spacing:.1em;margin-right:8px}
+@media (min-width:820px){.job{grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr)}}
+
+.skills{display:grid;margin:0;border-top:1.5px solid var(--ink)}
+.skills div{display:grid;gap:4px 40px;padding-block:14px;border-bottom:1px solid var(--grid)}
+.skills div:last-child{border-bottom:1.5px solid var(--ink)}
+.skills dt{font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;font-weight:650;letter-spacing:.1em;text-transform:uppercase;padding-top:3px}
+.skills dd{margin:0}
+@media (min-width:820px){.skills div{grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr)}}
+
+.edu{display:grid;border-top:1.5px solid var(--ink)}
+.edu .row{display:grid;gap:6px 40px;padding-block:18px;border-bottom:1.5px solid var(--ink)}
+.edu .school{font-weight:650}
+.edu .deg{color:var(--pencil);font-size:15px}
+.edu .score{font-family:var(--mono);font-stretch:87.5%;font-size:12px;font-weight:650;font-variant-numeric:tabular-nums}
+@media (min-width:820px){.edu .row{grid-template-columns:minmax(0,3.2fr) minmax(0,6.4fr) minmax(0,2.4fr)}.edu .score{text-align:right}}
+
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:32px 44px;margin-top:clamp(48px,6vw,80px);color:var(--pencil)}
+.foot a{text-decoration:none;border-bottom:1px solid currentColor}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html" aria-label="Jay Unewal, back to the overview">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polygon class="g-mk" points="12,2.5 20.5,7.2 12,12 3.5,7.2"/><polygon class="g-fl" points="3.5,7.2 12,12 12,21.5 3.5,16.8"/><polygon class="g-ink" points="12,12 20.5,7.2 20.5,16.8 12,21.5"/></svg>
+    Jay Unewal
+  </a>
+  <nav aria-label="Page"><a href="index.html">← Overview</a></nav>
+</header>
+
+<main>
+  <header class="head">
+    <p class="kicker mono">Sheet 2 of 2</p>
+    <h1><span class="raw">Resume</span> <span class="res">Jay Unewal</span></h1>
+    <p class="role"><span class="nw">Engineering Manager ·</span> <span class="nw">Product Development Lead</span></p>
+    <ul class="facts mono">
+      <li><b>8+ years</b> in software</li>
+      <li><b>Web · Mobile · Client-server</b></li>
+      <li><b>India</b> / Vancouver, BC</li>
+    </ul>
+    <div class="mailrow"><span id="email">jayunewal@outlook.com</span><button type="button" id="copy-email">Copy email</button><a class="inlink" href="https://www.linkedin.com/in/jayunewal" target="_blank" rel="noopener">LinkedIn ↗</a><span class="copy-status" id="copy-status" role="status"></span></div>
+    <p class="summary">8+ years of software engineering experience across various phases of the SDLC. Sound understanding of web, mobile and client-server technologies. I have worked in diverse technologies and interfacing roles, which built my leadership and client-interaction skills.</p>
+  </header>
+
+  <figure class="plate">
+    <svg class="tl tl-d" viewBox="0 0 1000 184" role="img" aria-label="Career timeline. TigmaMinds: Trainee from November 2017 to November 2018, Product Development Lead from November 2018 to January 2024, then Engineering Manager from April 2025 to now. Teupo Inc: Product Development Lead from February 2024 to now.">
+      <text class="t-k" x="60" y="26">TIGMAMINDS (FORMERLY CRYSTAL BI)</text>
+      <rect class="bar" x="136.7" y="36" width="92" height="30" rx="2"/><text class="t-b" x="146" y="55.5">Trainee</text>
+      <rect class="bar" x="228.7" y="36" width="483" height="30" rx="2"/><text class="t-b" x="240" y="55.5">Product Development Lead</text>
+      <rect class="bar now" x="819" y="36" width="134" height="30" rx="2"/><text class="t-b now-t" x="829" y="55.5">Eng. Manager</text>
+      <text class="t-k" x="60" y="94">TEUPO INC</text>
+      <rect class="bar now" x="711.7" y="104" width="241.3" height="30" rx="2"/><text class="t-b now-t" x="722" y="123.5">Product Development Lead</text>
+      <line class="nowln" x1="953" y1="14" x2="953" y2="150"/><text class="t-k" x="953" y="10" text-anchor="middle">NOW</text>
+      <line class="ax" x1="60" y1="150" x2="980" y2="150"/>
+      <g class="tick"><line x1="60" y1="146" x2="60" y2="154"/><line x1="152" y1="146" x2="152" y2="154"/><line x1="244" y1="146" x2="244" y2="154"/><line x1="336" y1="146" x2="336" y2="154"/><line x1="428" y1="146" x2="428" y2="154"/><line x1="520" y1="146" x2="520" y2="154"/><line x1="612" y1="146" x2="612" y2="154"/><line x1="704" y1="146" x2="704" y2="154"/><line x1="796" y1="146" x2="796" y2="154"/><line x1="888" y1="146" x2="888" y2="154"/><line x1="980" y1="146" x2="980" y2="154"/></g>
+      <text class="t-y" x="60" y="172" text-anchor="middle">2017</text><text class="t-y" x="152" y="172" text-anchor="middle">2018</text><text class="t-y" x="244" y="172" text-anchor="middle">2019</text><text class="t-y" x="336" y="172" text-anchor="middle">2020</text><text class="t-y" x="428" y="172" text-anchor="middle">2021</text><text class="t-y" x="520" y="172" text-anchor="middle">2022</text><text class="t-y" x="612" y="172" text-anchor="middle">2023</text><text class="t-y" x="704" y="172" text-anchor="middle">2024</text><text class="t-y" x="796" y="172" text-anchor="middle">2025</text><text class="t-y" x="888" y="172" text-anchor="middle">2026</text>
+    </svg>
+    <svg class="tl tl-m" viewBox="0 0 360 180" role="img" aria-label="Career timeline. TigmaMinds: Trainee from November 2017 to November 2018, Product Development Lead from November 2018 to January 2024, then Engineering Manager from April 2025 to now. Teupo Inc: Product Development Lead from February 2024 to now.">
+      <text class="t-k" x="20" y="16">TIGMAMINDS</text>
+      <text class="t-b" x="46.6" y="36">Trainee</text>
+      <text class="t-b" x="330.7" y="36" text-anchor="end">Eng. Manager</text>
+      <rect class="bar" x="46.6" y="44" width="32" height="24" rx="2"/>
+      <rect class="bar" x="78.6" y="44" width="168" height="24" rx="2"/><text class="t-b" x="86" y="60">Product Dev. Lead</text>
+      <rect class="bar now" x="284" y="44" width="46.7" height="24" rx="2"/>
+      <text class="t-k" x="20" y="98">TEUPO INC</text>
+      <rect class="bar now" x="246.6" y="108" width="84.1" height="24" rx="2"/>
+      <text class="t-b" x="238" y="124" text-anchor="end">Product Dev. Lead</text>
+      <line class="nowln" x1="330.7" y1="20" x2="330.7" y2="146"/><text class="t-k" x="330.7" y="16" text-anchor="middle">NOW</text>
+      <line class="ax" x1="20" y1="146" x2="340" y2="146"/>
+      <g class="tick"><line x1="20" y1="142" x2="20" y2="150"/><line x1="52" y1="142" x2="52" y2="150"/><line x1="84" y1="142" x2="84" y2="150"/><line x1="116" y1="142" x2="116" y2="150"/><line x1="148" y1="142" x2="148" y2="150"/><line x1="180" y1="142" x2="180" y2="150"/><line x1="212" y1="142" x2="212" y2="150"/><line x1="244" y1="142" x2="244" y2="150"/><line x1="276" y1="142" x2="276" y2="150"/><line x1="308" y1="142" x2="308" y2="150"/><line x1="340" y1="142" x2="340" y2="150"/></g>
+      <text class="t-y" x="20" y="166" text-anchor="middle">'17</text><text class="t-y" x="84" y="166" text-anchor="middle">'19</text><text class="t-y" x="148" y="166" text-anchor="middle">'21</text><text class="t-y" x="212" y="166" text-anchor="middle">'23</text><text class="t-y" x="276" y="166" text-anchor="middle">'25</text>
+    </svg>
+    <figcaption><span>Career timeline, 2017 to now</span><span class="legend"><i></i>Current role</span></figcaption>
+  </figure>
+
+  <section aria-labelledby="exp-h">
+    <div class="sh"><h2 id="exp-h">Experience</h2><span class="mono">4 roles · 2 companies</span></div>
+
+    <article class="job">
+      <div class="meta"><p class="when">Apr 2025 – Present <span class="cur">NOW</span></p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
+      <div>
+        <h3>Product Development Lead, promoted to Engineering Manager</h3>
+        <ul>
+          <li>Lead cross-functional engineering teams building and scaling Project Watershed (codename), a high-performance data platform with robust API orchestration.</li>
+          <li>Own end-to-end technical strategy, execution and delivery for platform initiatives, with a focus on reliability, scalability and alignment with product and business goals.</li>
+          <li>Architected an integrated platform connecting pet parents and providers, covering scheduling, event workflows and session management, with a focus on uptime, data integrity and performance.</li>
+          <li>Technical lead across mobile and backend for appointment session tracking, payment processing and media management in the iOS app.</li>
+          <li>Directed microservices and APIs in Python Flask, Java Spring and Node.js with consistent standards, observability and API governance.</li>
+          <li>Oversaw data architecture across PostgreSQL and AWS-managed storage, setting data modeling guidelines, retention policies and access patterns for high-volume transactional workloads.</li>
+          <li>Drove session documentation, real-time activity streaming, invoice generation and secure Stripe payments.</li>
+          <li>Led a Node.js media service for text, image and video uploads with AWS CloudFront CDN caching, improving delivery performance and cost efficiency.</li>
+          <li>Managed AWS infrastructure (EC2, Lambda, RDS, CloudFront, DynamoDB), CI/CD, infrastructure-as-code and observability.</li>
+          <li>Mentored engineers across backend, mobile and DevOps through code quality, architecture reviews, sprint planning and career development, improving velocity and delivery predictability.</li>
+        </ul>
+        <p class="stack"><b>STACK</b>Python Flask · Java Spring · Node.js · Swift/iOS · MySQL · MongoDB · DynamoDB · AWS RDS · CloudFront · Lambda · EC2 · Stripe · Kafka · Redis · CI/CD · API orchestration</p>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="meta"><p class="when">Feb 2024 – Present <span class="cur">NOW</span></p><p class="org">Teupo Inc</p><p class="sub">Vancouver, BC, Canada</p></div>
+      <div>
+        <h3>Product Development Lead</h3>
+        <ul>
+          <li>Lead a travel-domain services project, running knowledge transfers and onboarding and supporting multiple teams with development and code reviews.</li>
+          <li>Built a teleconsulting app for doctors, covering API development and iOS video calling and chat.</li>
+          <li>Delivered video calling and chat across Android, iOS and web with the Twilio SDK.</li>
+          <li>Enhanced the pet parents' appointment tracking platform with real-time walk tracking using server-sent events.</li>
+          <li>Coordinated Python Flask and Java Spring APIs with the Android and web teams while leading iOS development.</li>
+          <li>Contributed APIs to an Electronic Health Records (EHR) project.</li>
+        </ul>
+        <p class="stack"><b>STACK</b>Python Flask · Java Spring · MongoDB · MySQL · AWS RDS · EC2 · EKS · iOS Swift · Razorpay · Twilio · Redis · Elasticsearch · Docker · Kubernetes · Splunk · ELK · Grafana · Gradle · Jenkins</p>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="meta"><p class="when">Nov 2018 – Jan 2024</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
+      <div>
+        <h3>Product Development Lead</h3>
+        <ul>
+          <li>Elevated to Product Development Lead, driving the team's development initiatives.</li>
+          <li>Designed a platform connecting pet parents and providers with scheduling, event management and appointment session tracking.</li>
+          <li>Led iOS development for session recording, payment processing and a pet gallery for media sharing.</li>
+          <li>Built Python Flask APIs for session recording and Java Spring APIs for payments and the pet gallery.</li>
+          <li>Used MySQL for transactional data and MongoDB for other data.</li>
+          <li>Delivered session documentation, real-time activity tracking, invoice generation and Stripe integration.</li>
+          <li>Built a Node.js media server for text, photo and video posts with CDN caching.</li>
+        </ul>
+        <p class="stack"><b>STACK</b>Python Flask · Java Spring · Node.js · MongoDB · MySQL · AWS RDS · CloudFront · Lambda · DynamoDB · EC2 · iOS Swift · Stripe · Kafka · Redis</p>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="meta"><p class="when">Nov 2017 – Nov 2018</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
+      <div>
+        <h3>Product Development Trainee</h3>
+        <ul>
+          <li>Designed and built an automated pharmacy inventory management and GST-compliant billing system.</li>
+          <li>Built Java Spring APIs on Tomcat with an AngularJS front end.</li>
+          <li>Optimized SQL queries, then moved from MySQL to MongoDB for better data management.</li>
+          <li>Deployed the full stack on AWS.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="skills-h">
+    <div class="sh"><h2 id="skills-h">Skills</h2></div>
+    <dl class="skills">
+      <div><dt>Languages</dt><dd>Java · Python · Swift · JavaScript · HTML/CSS · SQL · NoSQL</dd></div>
+      <div><dt>Technologies</dt><dd>iOS · Spring · Servlets · JSP · Flask · Node.js · MSSQL · MySQL · MongoDB · DynamoDB · Microservices · Kafka · Redis · Elasticsearch · Docker · Kubernetes · GitLab CI/CD · Jenkins · Gradle · Maven · NGINX · Firebase · Twilio · Stripe · JUnit · Mockito · TestNG · Pytest · Grafana · Splunk · Kibana · Logstash</dd></div>
+      <div><dt>Cloud</dt><dd>Cloudflare · AWS: EC2 · ECS · EKS · RDS · S3 · Lambda · CloudFront · Step Functions · Elemental MediaConvert · CloudWatch · Route 53 · IAM</dd></div>
+      <div><dt>Concepts</dt><dd>OOP · Mobile Development · MVC · MVVM</dd></div>
+      <div><dt>Management</dt><dd>Scrum · Strategic Planning · Process Improvement · Market Analysis · Problem Solving</dd></div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="edu-h">
+    <div class="sh"><h2 id="edu-h">Education</h2></div>
+    <div class="edu">
+      <div class="row"><p class="when">April 2017</p><div><p class="school">Sardar Vallabhbhai Patel Institute of Technology</p><p class="deg">Bachelor's, Computer Engineering · Gujarat, India</p></div><p class="score">8.04 CGPA</p></div>
+      <div class="row"><p class="when">April 2014</p><div><p class="school">Parul Institute of Engineering &amp; Technology</p><p class="deg">Diploma, Computer Engineering · Gujarat, India</p></div><p class="score">8.50 CGPA</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot mono">
+  <span>© 2026 Jay Unewal · Sheet 2 of 2</span>
+  <a href="index.html">← Back to the overview</a>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var el = document.getElementById('email');
+  var status = document.getElementById('copy-status');
+  var timer = null;
+  function selectEmail() {
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function say(msg) {
+    status.textContent = msg; clearTimeout(timer);
+    timer = setTimeout(function () { status.textContent = ''; }, 3200);
+  }
+  function fallback() { selectEmail(); say('Selected. Press Ctrl+C or ⌘C to copy.'); }
+  btn.addEventListener('click', function () {
+    var text = el.textContent.trim();
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { say('Copied to your clipboard.'); }, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
