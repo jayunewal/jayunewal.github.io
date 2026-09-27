@@ -10,6 +10,7 @@ Plain static HTML, no build step. GitHub Pages serves the `main` branch root.
 | `resume.html` | Full resume (has its own print styles) |
 | `Jay-Unewal-Resume.pdf` | Resume PDF, generated from `resume.html` |
 | `404.html` | "Sheet not found" page for broken links |
+| `img/` | Photo of Jay (480 and 800px wide, WebP and JPEG) |
 | `og-image.png` | 1200x630 link-preview card (LinkedIn, WhatsApp, Slack) |
 | `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` | Icons |
 | `fonts/` | Self-hosted Archivo and Martian Mono, cut down to what the pages use (OFL, see `fonts/OFL.txt`) |

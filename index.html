@@ -27,7 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":"https://jayunewal.com/#website","url":"https://jayunewal.com/","name":"Jay Unewal"},
- {"@type":"Person","@id":"https://jayunewal.com/#jay","name":"Jay Unewal","url":"https://jayunewal.com/","jobTitle":"Senior Product Development Lead","sameAs":["https://www.linkedin.com/in/jayunewal"]}
+ {"@type":"Person","@id":"https://jayunewal.com/#jay","name":"Jay Unewal","url":"https://jayunewal.com/","jobTitle":"Senior Product Development Lead","image":"https://jayunewal.com/img/jay-800.jpg","sameAs":["https://www.linkedin.com/in/jayunewal"]}
 ]}
 </script>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -375,6 +375,12 @@ figcaption{display:flex;justify-content:space-between;align-items:center;flex-wr
 .rstrip>div+div{border-left:1px solid var(--ink)}
 .rstrip dd{margin:0;font-weight:650;font-size:16px}
 @media (max-width:640px){.rstrip{grid-template-columns:1fr;width:100%}.rstrip>div+div{border-left:0;border-top:1px solid var(--ink)}}
+.portrait{padding:10px;max-width:320px}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (min-width:900px){
+  #contact .sec-head h2,#contact .sec-head .lede{grid-column:4/10}
+  #contact .sec-head .portrait{grid-column:10/13;grid-row:1/span 3;justify-self:end;width:100%;max-width:300px}
+}
 .tblock{display:grid;border:2px solid var(--ink);background:var(--sheet)}
 .tb{display:grid;gap:8px;align-content:start;padding:16px 18px;border-top:1px solid var(--ink);min-width:0}
 .tb:first-child{border-top:0}
@@ -611,6 +617,12 @@ figcaption{display:flex;justify-content:space-between;align-items:center;flex-wr
       <p class="kicker">Contact</p>
       <h2 id="contact-h"><span class="raw">Have an idea?</span> <span class="res"><span class="hl">Send it over.</span></span></h2>
       <p class="lede">Glad to talk it through and share how I'd approach it.</p>
+      <figure class="plate portrait">
+        <picture>
+          <source type="image/webp" srcset="img/jay-480.webp 480w, img/jay-800.webp 800w" sizes="(min-width:900px) 300px, (min-width:520px) 320px, calc(100vw - 56px)">
+          <img src="img/jay-480.jpg" srcset="img/jay-480.jpg 480w, img/jay-800.jpg 800w" sizes="(min-width:900px) 300px, (min-width:520px) 320px, calc(100vw - 56px)" width="480" height="600" loading="lazy" decoding="async" alt="Jay Unewal standing at a railing on a wooden pier, with water, mountains and a blue sky behind him.">
+        </picture>
+      </figure>
     </div>
     <div class="tblock" role="group" aria-label="Contact details">
       <div class="tb tb-name"><span class="tb-k">Drawn by</span><span class="tb-v">Jay Unewal</span></div>
