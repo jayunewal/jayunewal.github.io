@@ -72,6 +72,7 @@ li{text-wrap:pretty}
 .tl .t-k{font-size:10.5px;letter-spacing:.14em;fill:var(--pencil)}
 .tl .t-b{font-size:11.5px;font-weight:600;letter-spacing:.03em}
 .tl .t-y{font-size:11px;fill:var(--pencil)}
+.tl-d .t-b{font-size:11px;letter-spacing:0}
 .tl-m .t-k{font-size:10px}
 .tl-m .t-b{font-size:10.5px}
 .tl-m .t-y{font-size:10px}
@@ -81,9 +82,12 @@ li{text-wrap:pretty}
 .tl .ax{stroke:var(--ink);stroke-width:1.2}
 .tl .tick{stroke:var(--ink);stroke-width:1}
 .tl .nowln{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 4}
+.tl .riser{stroke:var(--ink);stroke-width:1.3}
 figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
 .legend{display:inline-flex;align-items:center;gap:8px}
+.legends{display:inline-flex;flex-wrap:wrap;gap:8px 20px}
 .legend i{width:11px;height:11px;background:var(--mark);border:1px solid var(--ink)}
+.legend i.lg-step{width:12px;height:12px;background:none;border:0;border-left:1.3px solid var(--ink);border-bottom:1.3px solid var(--ink);transform:scaleX(-1)}
 @media (max-width:700px){.tl-d{display:none}.tl-m{display:block}}
 
 section{padding-block:clamp(48px,7vw,88px) 0}
@@ -102,6 +106,10 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
 .job ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;max-width:70ch}
 .job li{position:relative;padding-left:20px}
 .job li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border:1.3px solid var(--ink)}
+.steps{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px;max-width:70ch}
+.job .steps li{padding-left:0;display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:12px;align-items:baseline;font-weight:600}
+.job .steps li::before{content:none}
+.steps .when{font-weight:600;color:var(--pencil)}
 .stack{margin-top:16px;font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;line-height:1.8;color:var(--pencil);max-width:78ch}
 .stack b{color:var(--ink);letter-spacing:.1em;margin-right:8px}
 @media (min-width:820px){.job{grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr)}}
@@ -137,7 +145,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
   <header class="head">
     <p class="kicker mono">Sheet 2 of 2</p>
     <h1><span class="raw">Resume</span> <span class="res">Jay Unewal</span></h1>
-    <p class="role"><span class="nw">Engineering Manager ·</span> <span class="nw">Product Development Lead</span></p>
+    <p class="role"><span class="nw">Senior Product Development Lead</span></p>
     <ul class="facts mono">
       <li><b>8+ years</b> in software</li>
       <li><b>Web · Mobile · Client-server</b></li>
@@ -148,43 +156,64 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
   </header>
 
   <figure class="plate">
-    <svg class="tl tl-d" viewBox="0 0 1000 184" role="img" aria-label="Career timeline. TigmaMinds: Trainee from November 2017 to November 2018, Product Development Lead from November 2018 to January 2024, then Engineering Manager from April 2025 to now. Teupo Inc: Product Development Lead from February 2024 to now.">
-      <text class="t-k" x="60" y="26">TIGMAMINDS (FORMERLY CRYSTAL BI)</text>
-      <rect class="bar" x="136.7" y="36" width="92" height="30" rx="2"/><text class="t-b" x="146" y="55.5">Trainee</text>
-      <rect class="bar" x="228.7" y="36" width="483" height="30" rx="2"/><text class="t-b" x="240" y="55.5">Product Development Lead</text>
-      <rect class="bar now" x="819" y="36" width="134" height="30" rx="2"/><text class="t-b now-t" x="829" y="55.5">Eng. Manager</text>
-      <text class="t-k" x="60" y="94">TEUPO INC</text>
-      <rect class="bar now" x="711.7" y="104" width="241.3" height="30" rx="2"/><text class="t-b now-t" x="722" y="123.5">Product Development Lead</text>
-      <line class="nowln" x1="953" y1="14" x2="953" y2="150"/><text class="t-k" x="953" y="10" text-anchor="middle">NOW</text>
-      <line class="ax" x1="60" y1="150" x2="980" y2="150"/>
-      <g class="tick"><line x1="60" y1="146" x2="60" y2="154"/><line x1="152" y1="146" x2="152" y2="154"/><line x1="244" y1="146" x2="244" y2="154"/><line x1="336" y1="146" x2="336" y2="154"/><line x1="428" y1="146" x2="428" y2="154"/><line x1="520" y1="146" x2="520" y2="154"/><line x1="612" y1="146" x2="612" y2="154"/><line x1="704" y1="146" x2="704" y2="154"/><line x1="796" y1="146" x2="796" y2="154"/><line x1="888" y1="146" x2="888" y2="154"/><line x1="980" y1="146" x2="980" y2="154"/></g>
-      <text class="t-y" x="60" y="172" text-anchor="middle">2017</text><text class="t-y" x="152" y="172" text-anchor="middle">2018</text><text class="t-y" x="244" y="172" text-anchor="middle">2019</text><text class="t-y" x="336" y="172" text-anchor="middle">2020</text><text class="t-y" x="428" y="172" text-anchor="middle">2021</text><text class="t-y" x="520" y="172" text-anchor="middle">2022</text><text class="t-y" x="612" y="172" text-anchor="middle">2023</text><text class="t-y" x="704" y="172" text-anchor="middle">2024</text><text class="t-y" x="796" y="172" text-anchor="middle">2025</text><text class="t-y" x="888" y="172" text-anchor="middle">2026</text>
+    <svg class="tl tl-d" viewBox="0 0 1000 305" role="img" aria-label="Career timeline. TigmaMinds: Trainee 2017 to 2018, Product Development Engineer 2018 to 2021, Senior Product Development Engineer 2021 to 2023, Product Development Lead 2023 to 2025, Senior Product Development Lead 2025 to now. Teupo Inc: Product Development Lead 2024 to 2025.">
+      <line class="nowln" x1="953" y1="22" x2="953" y2="271"/><text class="t-k" x="953" y="18" text-anchor="middle">NOW</text>
+      <text class="t-k" x="60" y="28">TIGMAMINDS (FORMERLY CRYSTAL BI)</text>
+      <rect class="bar now" x="796" y="53" width="157" height="12" rx="1.5"/>
+      <text class="t-b" x="802" y="47">Sr. Product Dev. Lead</text>
+      <line class="riser" x1="796" y1="85" x2="796" y2="65"/>
+      <rect class="bar" x="612" y="85" width="184" height="12" rx="1.5"/>
+      <text class="t-b" x="618" y="79">Product Dev. Lead</text>
+      <line class="riser" x1="612" y1="117" x2="612" y2="97"/>
+      <rect class="bar" x="428" y="117" width="184" height="12" rx="1.5"/>
+      <text class="t-b" x="434" y="111">Sr. Product Dev. Engineer</text>
+      <line class="riser" x1="428" y1="149" x2="428" y2="129"/>
+      <rect class="bar" x="152" y="149" width="276" height="12" rx="1.5"/>
+      <text class="t-b" x="158" y="143">Product Dev. Engineer</text>
+      <line class="riser" x1="152" y1="181" x2="152" y2="161"/>
+      <rect class="bar" x="60" y="181" width="92" height="12" rx="1.5"/>
+      <text class="t-b" x="66" y="175">Trainee</text>
+      <text class="t-k" x="60" y="223">TEUPO INC</text>
+      <rect class="bar" x="704" y="246" width="92" height="12" rx="1.5"/>
+      <text class="t-b" x="710" y="240">Product Dev. Lead</text>
+      <line class="ax" x1="60" y1="271" x2="980" y2="271"/>
+      <g class="tick"><line x1="60" y1="267" x2="60" y2="275"/><line x1="152" y1="267" x2="152" y2="275"/><line x1="244" y1="267" x2="244" y2="275"/><line x1="336" y1="267" x2="336" y2="275"/><line x1="428" y1="267" x2="428" y2="275"/><line x1="520" y1="267" x2="520" y2="275"/><line x1="612" y1="267" x2="612" y2="275"/><line x1="704" y1="267" x2="704" y2="275"/><line x1="796" y1="267" x2="796" y2="275"/><line x1="888" y1="267" x2="888" y2="275"/><line x1="980" y1="267" x2="980" y2="275"/></g>
+      <text class="t-y" x="60" y="293" text-anchor="middle">2017</text><text class="t-y" x="152" y="293" text-anchor="middle">2018</text><text class="t-y" x="244" y="293" text-anchor="middle">2019</text><text class="t-y" x="336" y="293" text-anchor="middle">2020</text><text class="t-y" x="428" y="293" text-anchor="middle">2021</text><text class="t-y" x="520" y="293" text-anchor="middle">2022</text><text class="t-y" x="612" y="293" text-anchor="middle">2023</text><text class="t-y" x="704" y="293" text-anchor="middle">2024</text><text class="t-y" x="796" y="293" text-anchor="middle">2025</text><text class="t-y" x="888" y="293" text-anchor="middle">2026</text>
     </svg>
-    <svg class="tl tl-m" viewBox="0 0 360 180" role="img" aria-label="Career timeline. TigmaMinds: Trainee from November 2017 to November 2018, Product Development Lead from November 2018 to January 2024, then Engineering Manager from April 2025 to now. Teupo Inc: Product Development Lead from February 2024 to now.">
-      <text class="t-k" x="20" y="16">TIGMAMINDS</text>
-      <text class="t-b" x="46.6" y="36">Trainee</text>
-      <text class="t-b" x="330.7" y="36" text-anchor="end">Eng. Manager</text>
-      <rect class="bar" x="46.6" y="44" width="32" height="24" rx="2"/>
-      <rect class="bar" x="78.6" y="44" width="168" height="24" rx="2"/><text class="t-b" x="86" y="60">Product Dev. Lead</text>
-      <rect class="bar now" x="284" y="44" width="46.7" height="24" rx="2"/>
-      <text class="t-k" x="20" y="98">TEUPO INC</text>
-      <rect class="bar now" x="246.6" y="108" width="84.1" height="24" rx="2"/>
-      <text class="t-b" x="238" y="124" text-anchor="end">Product Dev. Lead</text>
-      <line class="nowln" x1="330.7" y1="20" x2="330.7" y2="146"/><text class="t-k" x="330.7" y="16" text-anchor="middle">NOW</text>
-      <line class="ax" x1="20" y1="146" x2="340" y2="146"/>
-      <g class="tick"><line x1="20" y1="142" x2="20" y2="150"/><line x1="52" y1="142" x2="52" y2="150"/><line x1="84" y1="142" x2="84" y2="150"/><line x1="116" y1="142" x2="116" y2="150"/><line x1="148" y1="142" x2="148" y2="150"/><line x1="180" y1="142" x2="180" y2="150"/><line x1="212" y1="142" x2="212" y2="150"/><line x1="244" y1="142" x2="244" y2="150"/><line x1="276" y1="142" x2="276" y2="150"/><line x1="308" y1="142" x2="308" y2="150"/><line x1="340" y1="142" x2="340" y2="150"/></g>
-      <text class="t-y" x="20" y="166" text-anchor="middle">'17</text><text class="t-y" x="84" y="166" text-anchor="middle">'19</text><text class="t-y" x="148" y="166" text-anchor="middle">'21</text><text class="t-y" x="212" y="166" text-anchor="middle">'23</text><text class="t-y" x="276" y="166" text-anchor="middle">'25</text>
+    <svg class="tl tl-m" viewBox="0 0 360 279" role="img" aria-label="Career timeline. TigmaMinds: Trainee 2017 to 2018, Product Development Engineer 2018 to 2021, Senior Product Development Engineer 2021 to 2023, Product Development Lead 2023 to 2025, Senior Product Development Lead 2025 to now. Teupo Inc: Product Development Lead 2024 to 2025.">
+      <line class="nowln" x1="330.7" y1="22" x2="330.7" y2="245"/><text class="t-k" x="330.7" y="18" text-anchor="middle">NOW</text>
+      <text class="t-k" x="20" y="28">TIGMAMINDS</text>
+      <rect class="bar now" x="276" y="51" width="54.7" height="10" rx="1.5"/>
+      <text class="t-b" x="327.7" y="47" text-anchor="end">Sr. Product Dev. Lead</text>
+      <line class="riser" x1="276" y1="79" x2="276" y2="61"/>
+      <rect class="bar" x="212" y="79" width="64" height="10" rx="1.5"/>
+      <text class="t-b" x="273" y="75" text-anchor="end">Product Dev. Lead</text>
+      <line class="riser" x1="212" y1="107" x2="212" y2="89"/>
+      <rect class="bar" x="148" y="107" width="64" height="10" rx="1.5"/>
+      <text class="t-b" x="209" y="103" text-anchor="end">Sr. Product Dev. Engineer</text>
+      <line class="riser" x1="148" y1="135" x2="148" y2="117"/>
+      <rect class="bar" x="52" y="135" width="96" height="10" rx="1.5"/>
+      <text class="t-b" x="145" y="131" text-anchor="end">Product Dev. Engineer</text>
+      <line class="riser" x1="52" y1="163" x2="52" y2="145"/>
+      <rect class="bar" x="20" y="163" width="32" height="10" rx="1.5"/>
+      <text class="t-b" x="49" y="159" text-anchor="end">Trainee</text>
+      <text class="t-k" x="20" y="201">TEUPO INC</text>
+      <rect class="bar" x="244" y="222" width="32" height="10" rx="1.5"/>
+      <text class="t-b" x="273" y="218" text-anchor="end">Product Dev. Lead</text>
+      <line class="ax" x1="20" y1="245" x2="340" y2="245"/>
+      <g class="tick"><line x1="20" y1="241" x2="20" y2="249"/><line x1="52" y1="241" x2="52" y2="249"/><line x1="84" y1="241" x2="84" y2="249"/><line x1="116" y1="241" x2="116" y2="249"/><line x1="148" y1="241" x2="148" y2="249"/><line x1="180" y1="241" x2="180" y2="249"/><line x1="212" y1="241" x2="212" y2="249"/><line x1="244" y1="241" x2="244" y2="249"/><line x1="276" y1="241" x2="276" y2="249"/><line x1="308" y1="241" x2="308" y2="249"/><line x1="340" y1="241" x2="340" y2="249"/></g>
+      <text class="t-y" x="20" y="267" text-anchor="middle">'17</text><text class="t-y" x="84" y="267" text-anchor="middle">'19</text><text class="t-y" x="148" y="267" text-anchor="middle">'21</text><text class="t-y" x="212" y="267" text-anchor="middle">'23</text><text class="t-y" x="276" y="267" text-anchor="middle">'25</text>
     </svg>
-    <figcaption><span>Career timeline, 2017 to now</span><span class="legend"><i></i>Current role</span></figcaption>
+    <figcaption><span>Career timeline, 2017 to now</span><span class="legends"><span class="legend"><i class="lg-step"></i>Promotion</span><span class="legend"><i></i>Current role</span></span></figcaption>
   </figure>
 
   <section aria-labelledby="exp-h">
-    <div class="sh"><h2 id="exp-h">Experience</h2><span class="mono">4 roles · 2 companies</span></div>
+    <div class="sh"><h2 id="exp-h">Experience</h2><span class="mono">6 roles · 2 companies</span></div>
 
     <article class="job">
-      <div class="meta"><p class="when">Apr 2025 – Present <span class="cur">NOW</span></p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
+      <div class="meta"><p class="when">2025 – Present <span class="cur">NOW</span></p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
       <div>
-        <h3>Product Development Lead, promoted to Engineering Manager</h3>
+        <h3>Senior Product Development Lead</h3>
         <ul>
           <li>Lead cross-functional engineering teams building and scaling Project Watershed (codename), a high-performance data platform with robust API orchestration.</li>
           <li>Own end-to-end technical strategy, execution and delivery for platform initiatives, with a focus on reliability, scalability and alignment with product and business goals.</li>
@@ -202,11 +231,11 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     </article>
 
     <article class="job">
-      <div class="meta"><p class="when">Feb 2024 – Present <span class="cur">NOW</span></p><p class="org">Teupo Inc</p><p class="sub">Vancouver, BC, Canada</p></div>
+      <div class="meta"><p class="when">2024 – 2025</p><p class="org">Teupo Inc</p><p class="sub">Vancouver, BC, Canada</p></div>
       <div>
         <h3>Product Development Lead</h3>
         <ul>
-          <li>Lead a travel-domain services project, running knowledge transfers and onboarding and supporting multiple teams with development and code reviews.</li>
+          <li>Led a travel-domain services project, running knowledge transfers and onboarding and supporting multiple teams with development and code reviews.</li>
           <li>Built a teleconsulting app for doctors, covering API development and iOS video calling and chat.</li>
           <li>Delivered video calling and chat across Android, iOS and web with the Twilio SDK.</li>
           <li>Enhanced the pet parents' appointment tracking platform with real-time walk tracking using server-sent events.</li>
@@ -218,11 +247,15 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     </article>
 
     <article class="job">
-      <div class="meta"><p class="when">Nov 2018 – Jan 2024</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
+      <div class="meta"><p class="when">2018 – 2025</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
       <div>
-        <h3>Product Development Lead</h3>
+        <h3>Product Development Engineer to Product Development Lead</h3>
+        <ol class="steps" aria-label="Promotions">
+          <li><span class="when">2018 – 2021</span>Product Development Engineer</li>
+          <li><span class="when">2021 – 2023</span>Senior Product Development Engineer</li>
+          <li><span class="when">2023 – 2025</span>Product Development Lead</li>
+        </ol>
         <ul>
-          <li>Elevated to Product Development Lead, driving the team's development initiatives.</li>
           <li>Designed a platform connecting pet parents and providers with scheduling, event management and appointment session tracking.</li>
           <li>Led iOS development for session recording, payment processing and a pet gallery for media sharing.</li>
           <li>Built Python Flask APIs for session recording and Java Spring APIs for payments and the pet gallery.</li>
@@ -235,7 +268,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     </article>
 
     <article class="job">
-      <div class="meta"><p class="when">Nov 2017 – Nov 2018</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
+      <div class="meta"><p class="when">2017 – 2018</p><p class="org">TigmaMinds Pvt Ltd</p><p class="sub">Formerly Crystal BI · Guwahati, Assam</p></div>
       <div>
         <h3>Product Development Trainee</h3>
         <ul>
