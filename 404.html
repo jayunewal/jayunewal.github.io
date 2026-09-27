@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sheet not found · Jay Unewal</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F3F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1A2B" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Archivo";src:url(/fonts/archivo.woff2) format("woff2");font-weight:300 850;font-stretch:72% 125%;font-display:swap}
+@font-face{font-family:"Martian Mono";src:url(/fonts/martian.woff2) format("woff2");font-weight:400 800;font-stretch:75% 87.5%;font-display:swap}
+:root{--paper:#F3F4EF;--sheet:#F9FAF6;--ink:#15171C;--pencil:#5B606B;--grid:#D3D5CC;--mark:#FFD43B;--on-mark:#15171C;--plate:#FFFFFF;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;--mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--paper:#0D1A2B;--sheet:#11233A;--ink:#E7EDF5;--pencil:#9EB1C9;--grid:#28405F;--plate:#193050}}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px 16px;background:var(--paper);color:var(--ink);font-family:var(--display)}
+.sheet{width:min(560px,100%);border:1.5px solid var(--ink);background:radial-gradient(circle at 1px 1px,var(--grid) 1.1px,transparent 1.5px) 0 0/22px 22px,var(--sheet)}
+.draw{display:grid;place-items:center;padding:40px 16px 28px}
+.draw svg{width:150px;height:auto}
+.ghost{fill:none;stroke:var(--pencil);stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.mk{fill:var(--mark);stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+h1{margin:18px 0 0;font-stretch:72%;font-weight:850;font-size:clamp(2.4rem,6vw,3.4rem);line-height:.95;text-align:center}
+.tb{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--ink);font-family:var(--mono);font-stretch:87.5%;text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+.tb>*{padding:12px 16px;display:grid;gap:4px;text-decoration:none;color:inherit}
+.tb>*+*{border-left:1.5px solid var(--ink)}
+.tb span{color:var(--pencil)}
+.tb b{font-size:13px}
+.tb a:hover,.tb a:focus-visible{background:var(--mark);color:var(--on-mark)}
+.tb a:hover span,.tb a:focus-visible span{color:var(--on-mark)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <div class="draw">
+    <svg viewBox="0 0 24 24" role="img" aria-label="An outlined cube with only its top face drawn: this sheet is missing.">
+      <polygon class="ghost" points="3.5,7.2 12,12 12,21.5 3.5,16.8"/>
+      <polygon class="ghost" points="12,12 20.5,7.2 20.5,16.8 12,21.5"/>
+      <polygon class="mk" points="12,2.5 20.5,7.2 12,12 3.5,7.2"/>
+    </svg>
+    <h1>Sheet not found.</h1>
+  </div>
+  <nav class="tb" aria-label="Where to go">
+    <a href="/"><span>Sheet 1 of 2</span><b>Overview →</b></a>
+    <a href="/resume.html"><span>Sheet 2 of 2</span><b>Resume →</b></a>
+  </nav>
+</main>
+</body>
+</html>

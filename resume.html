@@ -3,17 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Jay Unewal Resume</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
+<title>Jay Unewal · Resume</title>
+<meta name="description" content="Resume of Jay Unewal, Senior Product Development Lead: 8+ years across web, native iOS, Flask, Spring and Node.js APIs, Kafka and AWS.">
+<link rel="canonical" href="https://jayunewal.com/resume.html">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F3F4EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1A2B" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Jay Unewal">
+<meta property="og:url" content="https://jayunewal.com/resume.html">
+<meta property="og:title" content="Jay Unewal · Resume">
+<meta property="og:description" content="Senior Product Development Lead. 8+ years across web, native iOS, APIs, AWS and data platforms.">
+<meta property="og:image" content="https://jayunewal.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jay Unewal. Idea to production, tuned at every layer: an exploded drawing of a product's layers, from client apps down to AWS.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/pdf" href="Jay-Unewal-Resume.pdf" title="Resume (PDF)">
+<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/martian.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Archivo";src:url(fonts/archivo.woff2) format("woff2");font-weight:300 850;font-stretch:72% 125%;font-display:swap}
+@font-face{font-family:"Martian Mono";src:url(fonts/martian.woff2) format("woff2");font-weight:400 800;font-stretch:75% 87.5%;font-display:swap}
+@font-face{font-family:"Mono Fallback";src:local("Menlo"),local("DejaVu Sans Mono"),local("Roboto Mono"),local("Courier New");size-adjust:108%}
+@font-face{font-family:"Sans Fallback";src:local("Arial"),local("Liberation Sans"),local("Roboto");size-adjust:97.6%}
+</style>
 <style>
 :root{
   --paper:#F3F4EF; --sheet:#F9FAF6; --plate:#FFFFFF; --ink:#15171C; --pencil:#5B606B; --grid:#D3D5CC;
   --mark:#FFD43B; --on-mark:#15171C;
-  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --display:"Archivo","Sans Fallback","Helvetica Neue",Arial,sans-serif;
+  --body:"Archivo","Sans Fallback","Helvetica Neue",Arial,sans-serif;
+  --mono:"Martian Mono","Mono Fallback",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --gut:clamp(16px,4vw,48px);
   color-scheme:light;
 }
@@ -51,12 +75,15 @@ li{text-wrap:pretty}
 .facts{display:flex;flex-wrap:wrap;gap:8px 28px;list-style:none;margin:0;padding:0;color:var(--pencil)}
 .facts b{color:var(--ink);font-weight:600}
 .mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
-#email{font-family:var(--mono);font-stretch:87.5%;font-size:15px;font-weight:600;user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+#email{font-family:var(--mono);font-stretch:87.5%;font-size:15px;font-weight:600;overflow-wrap:anywhere;text-decoration:none;border-bottom:2px solid var(--mark);padding-bottom:2px}
+#email:hover{background:var(--mark);color:var(--on-mark)}
 .inlink{font-family:var(--mono);font-stretch:87.5%;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding-block:4px;border-bottom:1.5px solid var(--ink)}
 .inlink:hover{background:var(--mark);color:var(--on-mark)}
-#copy-email{appearance:none;font-family:var(--mono);font-stretch:87.5%;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;background:var(--mark);color:var(--on-mark);border:1.5px solid var(--ink);border-radius:3px;cursor:pointer}
-#copy-email:hover{background:var(--ink);color:var(--paper)}
+#copy-email{appearance:none;font-family:var(--mono);font-stretch:87.5%;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;background:transparent;color:var(--ink);border:1.5px solid var(--ink);border-radius:3px;cursor:pointer}
+#copy-email:hover{background:var(--mark);color:var(--on-mark)}
 .copy-status{font-family:var(--mono);font-stretch:87.5%;font-size:11px;letter-spacing:.06em;color:var(--pencil)}
+.summary a,.job li a{text-decoration:none;border-bottom:2px solid var(--mark)}
+.summary a:hover,.job li a:hover{background:var(--mark);color:var(--on-mark)}
 .summary{max-width:60ch;font-size:18px;line-height:1.55}
 
 .plate{--c:var(--ink);--l:14px;--w:1.5px;margin:0;padding:clamp(12px,2.4vw,28px);background:
@@ -88,7 +115,7 @@ figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20p
 .legends{display:inline-flex;flex-wrap:wrap;gap:8px 20px}
 .legend i{width:11px;height:11px;background:var(--mark);border:1px solid var(--ink)}
 .legend i.lg-step{width:12px;height:12px;background:none;border:0;border-left:1.3px solid var(--ink);border-bottom:1.3px solid var(--ink);transform:scaleX(-1)}
-@media (max-width:700px){.tl-d{display:none}.tl-m{display:block}}
+@media (max-width:900px){.tl-d{display:none}.tl-m{display:block;max-width:460px;margin-inline:auto}}
 
 section{padding-block:clamp(48px,7vw,88px) 0}
 .sh{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(20px,3vw,32px);flex-wrap:wrap}
@@ -130,6 +157,34 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
 
 .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:32px 44px;margin-top:clamp(48px,6vw,80px);color:var(--pencil)}
 .foot a{text-decoration:none;border-bottom:1px solid currentColor}
+@media print{
+  @page{size:A4;margin:11mm 13mm}
+  :root,:root:not([data-theme="light"]),:root[data-theme="dark"]{color-scheme:light;--paper:#fff;--sheet:#fff;--plate:#fff;--ink:#15171C;--pencil:#4A4F59;--grid:#D3D5CC}
+  html,body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:9.3pt;line-height:1.3;padding:0}
+  .top,.foot,#copy-email,.copy-status,.inlink[download]{display:none}
+  .head{padding-block:0 10px;gap:8px}
+  .res{font-size:30pt}.raw{font-size:13pt}.role{font-size:12pt}
+  .summary{font-size:9.5pt;max-width:none}
+  #email{border:0;padding:0}
+  #email::after{content:"  ·  jayunewal.com"}
+  .inlink[href*="linkedin"]{font-size:0;border:0;padding:0}
+  .inlink[href*="linkedin"]::after{content:"linkedin.com/in/jayunewal";font-size:8.5pt;letter-spacing:.06em;text-transform:none}
+  .plate{padding:0;background:none}
+  .tl-d{display:block!important;width:auto;height:122px;margin-inline:auto}.tl-m{display:none!important}
+  figcaption{margin-top:4px}
+  section{padding-block:10px 0}
+  h2{font-size:15pt}
+  .sh{margin-bottom:4px}
+  .job{grid-template-columns:minmax(0,2.6fr) minmax(0,9.4fr);padding-block:7px;gap:3px 20px;break-inside:auto}
+  .job .meta{break-inside:avoid}
+  .job h3{font-size:11.5pt;margin-bottom:4px;break-after:avoid}
+  .steps{margin-bottom:6px;gap:1px;break-inside:avoid}
+  .job ul{gap:1px;max-width:none}.job li{break-inside:avoid}
+  .stack{margin-top:4px;font-size:7.5pt;line-height:1.5;max-width:none}
+  .skills div{grid-template-columns:minmax(0,2.6fr) minmax(0,9.4fr);padding-block:3px;break-inside:avoid}
+  .edu .row{grid-template-columns:minmax(0,2.6fr) minmax(0,7fr) minmax(0,2.4fr);padding-block:4px;break-inside:avoid}
+}
 </style>
 </head>
 <body>
@@ -151,8 +206,8 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
       <li><b>Web · Mobile · Client-server</b></li>
       <li><b>India</b> / Vancouver, BC</li>
     </ul>
-    <div class="mailrow"><span id="email">jayunewal@outlook.com</span><button type="button" id="copy-email">Copy email</button><a class="inlink" href="https://www.linkedin.com/in/jayunewal" target="_blank" rel="noopener">LinkedIn ↗</a><span class="copy-status" id="copy-status" role="status"></span></div>
-    <p class="summary">8+ years of software engineering experience across various phases of the SDLC. Sound understanding of web, mobile and client-server technologies. I have worked in diverse technologies and interfacing roles, which built my leadership and client-interaction skills.</p>
+    <div class="mailrow"><a id="email" href="mailto:jayunewal@outlook.com?subject=Hello%20from%20your%20resume">jayunewal@outlook.com</a><button type="button" id="copy-email" aria-label="Copy email address">Copy</button><a class="inlink" href="https://www.linkedin.com/in/jayunewal" target="_blank" rel="noopener">LinkedIn ↗</a><a class="inlink" href="Jay-Unewal-Resume.pdf" download>PDF ↓</a><span class="copy-status" id="copy-status" role="status"></span></div>
+    <p class="summary">I take products from idea to production across web, native iOS, APIs and AWS, and I make them fast and affordable to run. Today I lead engineering teams and architect the systems they build, most recently <a href="index.html#platform">Project Watershed</a>, a data platform.</p>
   </header>
 
   <figure class="plate">
@@ -215,18 +270,16 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
       <div>
         <h3>Senior Product Development Lead</h3>
         <ul>
-          <li>Lead cross-functional engineering teams building and scaling Project Watershed (codename), a high-performance data platform with robust API orchestration.</li>
+          <li>Engineering manager and architect for <a href="index.html#platform">Project Watershed</a> (codename), a high-performance data platform with robust API orchestration, leading the cross-functional teams that build and scale it.</li>
+          <li>Mentor engineers across backend, mobile and DevOps through code quality, architecture reviews, sprint planning and career development, improving velocity and delivery predictability.</li>
           <li>Own end-to-end technical strategy, execution and delivery for platform initiatives, with a focus on reliability, scalability and alignment with product and business goals.</li>
-          <li>Architected an integrated platform connecting pet parents and providers, covering scheduling, event workflows and session management, with a focus on uptime, data integrity and performance.</li>
-          <li>Technical lead across mobile and backend for appointment session tracking, payment processing and media management in the iOS app.</li>
-          <li>Directed microservices and APIs in Python Flask, Java Spring and Node.js with consistent standards, observability and API governance.</li>
-          <li>Oversaw data architecture across PostgreSQL and AWS-managed storage, setting data modeling guidelines, retention policies and access patterns for high-volume transactional workloads.</li>
-          <li>Drove session documentation, real-time activity streaming, invoice generation and secure Stripe payments.</li>
-          <li>Led a Node.js media service for text, image and video uploads with AWS CloudFront CDN caching, improving delivery performance and cost efficiency.</li>
-          <li>Managed AWS infrastructure (EC2, Lambda, RDS, CloudFront, DynamoDB), CI/CD, infrastructure-as-code and observability.</li>
-          <li>Mentored engineers across backend, mobile and DevOps through code quality, architecture reviews, sprint planning and career development, improving velocity and delivery predictability.</li>
+          <li>Direct microservices and APIs in Python Flask, Java Spring and Node.js with consistent standards, observability and API governance.</li>
+          <li>Oversee data architecture across PostgreSQL and AWS-managed storage, setting data modeling guidelines, retention policies and access patterns for high-volume transactional workloads.</li>
+          <li>Architected the pet care platform's scheduling, event workflows and session management, and lead mobile and backend work on session tracking, payments and media in the iOS app.</li>
+          <li>Drove real-time activity streaming, invoice generation and secure Stripe payments, and a Node.js media service on AWS CloudFront that improved delivery performance and cost.</li>
+          <li>Manage AWS infrastructure (EC2, Lambda, RDS, CloudFront, DynamoDB), CI/CD, infrastructure-as-code and observability.</li>
         </ul>
-        <p class="stack"><b>STACK</b>Python Flask · Java Spring · Node.js · Swift/iOS · MySQL · MongoDB · DynamoDB · AWS RDS · CloudFront · Lambda · EC2 · Stripe · Kafka · Redis · CI/CD · API orchestration</p>
+        <p class="stack"><b>STACK</b>Python Flask · Java Spring · Node.js · Swift/iOS · PostgreSQL · MySQL · MongoDB · DynamoDB · AWS RDS · CloudFront · Lambda · EC2 · Stripe · Kafka · Redis · CI/CD · API orchestration</p>
       </div>
     </article>
 
@@ -285,7 +338,7 @@ h2{font-stretch:72%;font-weight:850;font-size:clamp(2.1rem,2.4vw + 1.2rem,3.3rem
     <div class="sh"><h2 id="skills-h">Skills</h2></div>
     <dl class="skills">
       <div><dt>Languages</dt><dd>Java · Python · Swift · JavaScript · HTML/CSS · SQL · NoSQL</dd></div>
-      <div><dt>Technologies</dt><dd>iOS · Spring · Servlets · JSP · Flask · Node.js · MSSQL · MySQL · MongoDB · DynamoDB · Microservices · Kafka · Redis · Elasticsearch · Docker · Kubernetes · GitLab CI/CD · Jenkins · Gradle · Maven · NGINX · Firebase · Twilio · Stripe · JUnit · Mockito · TestNG · Pytest · Grafana · Splunk · Kibana · Logstash</dd></div>
+      <div><dt>Technologies</dt><dd>iOS · Spring · Servlets · JSP · Flask · Node.js · MSSQL · PostgreSQL · MySQL · MongoDB · DynamoDB · Microservices · Kafka · Redis · Elasticsearch · Docker · Kubernetes · GitLab CI/CD · Jenkins · Gradle · Maven · NGINX · Firebase · Twilio · Stripe · JUnit · Mockito · TestNG · Pytest · Grafana · Splunk · Kibana · Logstash</dd></div>
       <div><dt>Cloud</dt><dd>Cloudflare · AWS: EC2 · ECS · EKS · RDS · S3 · Lambda · CloudFront · Step Functions · Elemental MediaConvert · CloudWatch · Route 53 · IAM</dd></div>
       <div><dt>Concepts</dt><dd>OOP · Mobile Development · MVC · MVVM</dd></div>
       <div><dt>Management</dt><dd>Scrum · Strategic Planning · Process Improvement · Market Analysis · Problem Solving</dd></div>
